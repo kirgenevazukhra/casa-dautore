@@ -1,0 +1,561 @@
+<title>Casa d'Autore</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500;600&display=swap">
+<style>
+:root{
+  --bg:#F3EEE5; --bg2:#EAE3D6; --card:#FBF8F2;
+  --ink:#26241F; --ink2:#4A3628; --mute:#7E776C; --line:#D9D1C3;
+  --brass:#A98A4E; --brass-2:#8F7340; --wa:#2E7D5B;
+  --shadow:0 10px 30px rgba(38,36,31,.10);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1E1C19; --bg2:#27241F; --card:#2C2924;
+    --ink:#EFE9DD; --ink2:#D9CDBB; --mute:#A39A8B; --line:#3D3933;
+    --brass:#C7A65F; --brass-2:#D9B96E; --wa:#3E9C73;
+    --shadow:0 10px 30px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1E1C19; --bg2:#27241F; --card:#2C2924;
+  --ink:#EFE9DD; --ink2:#D9CDBB; --mute:#A39A8B; --line:#3D3933;
+  --brass:#C7A65F; --brass-2:#D9B96E; --wa:#3E9C73;
+  --shadow:0 10px 30px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Jost","Helvetica Neue",Arial,sans-serif;font-weight:400;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+h1,h2,h3{font-family:"Bodoni Moda","Didot",Georgia,serif;font-weight:400;margin:0;line-height:1.1;text-wrap:balance}
+p{margin:0}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+.eyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass);font-weight:500}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 26px;font-size:14px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--ink);transition:background .2s,color .2s;white-space:nowrap}
+.btn.p{background:var(--ink);color:var(--bg)}
+.btn.p:hover{background:var(--ink2);border-color:var(--ink2)}
+.btn.o:hover{background:var(--ink);color:var(--bg)}
+.btn.wa{background:var(--wa);border-color:var(--wa);color:#fff}
+.btn.wa:hover{filter:brightness(1.08)}
+.btn:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+.btn svg{width:18px;height:18px}
+
+/* header */
+header.top{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;gap:28px;height:72px}
+.logo{font-family:"Bodoni Moda",serif;font-size:24px;letter-spacing:.02em;line-height:1}
+.logo small{display:block;font-family:"Jost";font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute);margin-top:4px;font-weight:500}
+nav.main{display:flex;gap:26px;margin-left:12px}
+nav.main a{font-size:15px;color:var(--ink2);padding:6px 0;border-bottom:1px solid transparent}
+nav.main a:hover{border-color:var(--brass);color:var(--ink)}
+.top-right{margin-left:auto;display:flex;align-items:center;gap:18px}
+.phone{font-weight:500;font-size:15px}
+.lang{display:flex;border:1px solid var(--line);font-size:12px;letter-spacing:.08em}
+.lang button{padding:6px 10px;color:var(--mute)}
+.lang button.on{background:var(--ink);color:var(--bg)}
+.burger{display:none;width:40px;height:40px;align-items:center;justify-content:center}
+.burger span{display:block;width:22px;height:1.5px;background:var(--ink);box-shadow:0 -7px 0 var(--ink),0 7px 0 var(--ink)}
+
+/* hero */
+.hero{position:relative;margin-top:0}
+.hero .ph{aspect-ratio:16/8;background:var(--bg2);overflow:hidden}
+.hero .ph img{width:100%;height:100%;object-fit:cover}
+.hero .txt{background:var(--card);border:1px solid var(--line);padding:40px 44px;max-width:640px;margin:-120px auto 0;position:relative;display:flex;flex-direction:column;gap:18px;box-shadow:var(--shadow)}
+.hero h1{font-size:clamp(34px,4.6vw,56px)}
+.hero p.l{font-size:18px;color:var(--ink2);max-width:52ch}
+.hero .acts{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
+
+/* benefits */
+.benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:56px 0 8px}
+.benefit{display:flex;gap:14px;align-items:flex-start}
+.benefit i{flex:none;width:44px;height:44px;border:1px solid var(--brass);display:flex;align-items:center;justify-content:center;color:var(--brass)}
+.benefit i svg{width:22px;height:22px}
+.benefit b{display:block;font-weight:500;font-size:16px;margin-bottom:2px}
+.benefit span{font-size:14px;color:var(--mute);line-height:1.4}
+
+section{padding:64px 0 0}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:28px}
+.sec-head h2{font-size:clamp(30px,3.6vw,44px)}
+.sec-head p{color:var(--mute);max-width:56ch;margin-top:8px}
+.sec-head a{font-size:14px;letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid var(--ink);padding-bottom:3px;white-space:nowrap}
+
+/* categories */
+.cats{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.cat{display:block;text-align:left}
+.cat .ph{aspect-ratio:4/5;overflow:hidden;background:var(--bg2)}
+.cat img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s ease}
+.cat:hover img{transform:scale(1.04)}
+.cat b{display:block;font-weight:500;font-size:16px;margin-top:10px}
+.cat span{font-size:13px;color:var(--mute)}
+
+/* catalog */
+.filters{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:26px}
+.chip{padding:9px 16px;border:1px solid var(--line);font-size:14px;color:var(--ink2);background:var(--card)}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.filters .sep{width:1px;height:24px;background:var(--line);margin:0 6px}
+.filters label{font-size:13px;color:var(--mute);letter-spacing:.06em;text-transform:uppercase;margin-right:4px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 24px}
+.card{background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;text-align:left;transition:box-shadow .3s}
+.card:hover{box-shadow:var(--shadow)}
+.card .ph{aspect-ratio:4/3;overflow:hidden;background:var(--bg2);position:relative}
+.card .ph img{width:100%;height:100%;object-fit:cover;transition:opacity .5s}
+.card .ph img.alt{position:absolute;inset:0;opacity:0}
+.card:hover .ph img.alt{opacity:1}
+.card .ph .n{position:absolute;right:10px;top:10px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:var(--bg);padding:4px 8px;color:var(--ink)}
+.card .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card .cat-l{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.card h3{font-size:24px}
+.card .sub{font-size:14px;color:var(--mute)}
+.card .dims{font-size:13px;color:var(--ink2);font-variant-numeric:tabular-nums}
+.card .row{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:10px}
+.card .price{font-size:19px;font-weight:500;font-variant-numeric:tabular-nums}
+.card .row span.more{font-size:13px;letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid var(--ink)}
+.empty{grid-column:1/-1;padding:40px;text-align:center;color:var(--mute);border:1px dashed var(--line)}
+
+/* rooms */
+.rooms{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.room{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--bg2);display:block;text-align:left}
+.room img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s ease}
+.room:hover img{transform:scale(1.04)}
+.room .lbl{position:absolute;left:0;right:0;bottom:0;padding:18px;background:linear-gradient(transparent,rgba(20,18,15,.7));color:#F3EEE5}
+.room .lbl b{display:block;font-family:"Bodoni Moda",serif;font-weight:400;font-size:26px}
+.room .lbl span{font-size:13px;opacity:.85}
+
+/* info blocks */
+.info{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.box{background:var(--card);border:1px solid var(--line);padding:30px 32px;display:flex;flex-direction:column;gap:12px}
+.box h3{font-size:26px}
+.box ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;color:var(--ink2)}
+.box li::marker{color:var(--brass)}
+.box .big{font-family:"Bodoni Moda",serif;font-size:34px;color:var(--brass)}
+.show{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.show .ph{aspect-ratio:16/9;overflow:hidden;background:var(--bg2)}
+.show .ph img{width:100%;height:100%;object-fit:cover}
+.show .b{padding:18px 0 0;display:flex;flex-direction:column;gap:4px}
+.show .b b{font-family:"Bodoni Moda",serif;font-weight:400;font-size:26px}
+.show .b span{color:var(--ink2);font-size:15px}
+.show .b small{color:var(--mute);font-size:14px}
+
+/* form */
+.form{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.form form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form input,.form select,.form textarea{width:100%;padding:13px 14px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:15px}
+.form textarea{grid-column:1/-1;min-height:90px;resize:vertical}
+.form .full{grid-column:1/-1}
+.form .ok{grid-column:1/-1;padding:16px;border:1px solid var(--brass);color:var(--ink2);text-align:center}
+
+footer{margin-top:72px;border-top:1px solid var(--line);padding:40px 0 32px;font-size:14px;color:var(--mute)}
+footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:24px}
+footer b{display:block;color:var(--ink);font-weight:500;margin-bottom:10px}
+footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+footer .bottom{margin-top:30px;padding-top:16px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px}
+
+/* modal */
+.modal{position:fixed;inset:0;z-index:100;background:rgba(20,18,15,.6);display:flex;align-items:center;justify-content:center;padding:24px}
+.modal .win{background:var(--card);max-width:1080px;width:100%;max-height:92vh;overflow:auto;display:grid;grid-template-columns:1.15fr 1fr;position:relative}
+.modal .close{position:absolute;right:10px;top:10px;width:40px;height:40px;font-size:26px;line-height:1;display:flex;align-items:center;justify-content:center;background:var(--card);z-index:2}
+.gal{padding:20px;display:flex;flex-direction:column;gap:10px;background:var(--bg2)}
+.gal .main{aspect-ratio:4/3;overflow:hidden;background:var(--bg2);position:relative}
+.gal .main img{width:100%;height:100%;object-fit:cover}
+.gal .main .cap{position:absolute;left:10px;bottom:10px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:var(--bg);color:var(--ink);padding:4px 8px}
+.gal .arrows{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:center;padding:0 8px;pointer-events:none}
+.gal .arrows button{pointer-events:auto;width:40px;height:40px;background:var(--bg);color:var(--ink);font-size:20px;display:flex;align-items:center;justify-content:center}
+.gal .thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.gal .thumbs button{aspect-ratio:4/3;overflow:hidden;border:2px solid transparent;padding:0}
+.gal .thumbs button.on{border-color:var(--ink)}
+.gal .thumbs img{width:100%;height:100%;object-fit:cover}
+.det{padding:34px 34px 30px;display:flex;flex-direction:column;gap:16px}
+.det h2{font-size:34px}
+.det .price{font-size:26px;font-weight:500;font-variant-numeric:tabular-nums}
+.det .price small{display:block;font-size:13px;color:var(--mute);font-weight:400}
+.det .desc{color:var(--ink2);font-size:15px}
+.det .spec{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font-size:14px;border-top:1px solid var(--line);padding-top:12px}
+.det .spec dt{color:var(--mute)}
+.det .spec dd{margin:0;font-variant-numeric:tabular-nums}
+.fin .lab{display:flex;justify-content:space-between;font-size:13px;color:var(--mute);margin-bottom:8px}
+.fin .lab b{color:var(--ink);font-weight:500}
+.fin .sw{display:flex;gap:10px;flex-wrap:wrap}
+.fin .sw button{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);padding:0}
+.fin .sw button.on{outline:2px solid var(--ink);outline-offset:3px}
+.det .acts{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+.det .note{font-size:13px;color:var(--mute)}
+.det .acts .btn{width:100%}
+
+@media (max-width:1000px){
+  .benefits,.cats,.rooms,.grid{grid-template-columns:repeat(2,1fr)}
+  nav.main{display:none}
+  .phone{display:none}
+  .burger{display:flex}
+  header.top .wrap{gap:14px}
+  .top-right{gap:10px}
+  .hero .txt{margin:-40px 16px 0;padding:28px}
+  .hero .ph{aspect-ratio:4/3}
+  .info,.show,.form,.form form{grid-template-columns:1fr}
+  .form textarea,.form .full{grid-column:auto}
+  footer .cols{grid-template-columns:1fr 1fr}
+  .modal{padding:0}
+  .modal .win{grid-template-columns:1fr;max-height:100vh;height:100vh}
+  .gal .thumbs{grid-template-columns:repeat(4,1fr)}
+  .det{padding:24px}
+  .sec-head{flex-direction:column;align-items:flex-start}
+  .wrap{padding:0 18px}
+}
+@media (max-width:560px){
+  .benefits,.cats,.grid{grid-template-columns:1fr}
+  .rooms{grid-template-columns:1fr 1fr}
+  .cats{grid-template-columns:1fr 1fr}
+  .hero h1{font-size:30px}
+}
+nav.mobile{display:none;background:var(--card);border-bottom:1px solid var(--line)}
+nav.mobile.open{display:block}
+nav.mobile a{display:block;padding:14px 18px;border-bottom:1px solid var(--line);font-size:16px}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top">Casa d'Autore<small data-i="tag">Итальянская мебель · Казахстан</small></a>
+    <nav class="main">
+      <a href="#catalog" data-i="n1">Каталог</a>
+      <a href="#rooms" data-i="n2">Комнаты</a>
+      <a href="#delivery" data-i="n3">Доставка и оплата</a>
+      <a href="#showrooms" data-i="n4">Шоурумы</a>
+      <a href="#contact" data-i="n5">Контакты</a>
+    </nav>
+    <div class="top-right">
+      <a class="phone" href="tel:+77000000000">+7 700 000 00 00</a>
+      <div class="lang" role="group" aria-label="Язык"><button class="on" data-lang="ru">RU</button><button data-lang="kz">KZ</button></div>
+      <a class="btn wa" href="https://wa.me/77000000000" target="_blank" rel="noopener" style="padding:10px 16px"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.1 5 5 0 0 0 1 2.6 11.3 11.3 0 0 0 4.3 3.8c1.6.7 2.2.7 3 .6a2.6 2.6 0 0 0 1.7-1.2 2 2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg><span data-i="wa">WhatsApp</span></a>
+      <button class="burger" aria-label="Меню" onclick="document.getElementById('mnav').classList.toggle('open')"><span></span></button>
+    </div>
+  </div>
+  <nav class="mobile" id="mnav">
+    <a href="#catalog" data-i="n1">Каталог</a><a href="#rooms" data-i="n2">Комнаты</a><a href="#delivery" data-i="n3">Доставка и оплата</a><a href="#showrooms" data-i="n4">Шоурумы</a><a href="#contact" data-i="n5">Контакты</a><a href="tel:+77000000000">+7 700 000 00 00</a>
+  </nav>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="ph"><img src="@@hero@@" alt="Светлая гостиная с двумя диванами и деревянным столиком"></div>
+    <div class="wrap">
+      <div class="txt">
+        <span class="eyebrow" data-i="h0">Сделано в Италии</span>
+        <h1 data-i="h1">Итальянская мебель с доставкой по всему Казахстану</h1>
+        <p class="l" data-i="h2">Диваны, кресла, кровати, зеркала и столы от фабрик Италии. Показываем в шоурумах Алматы и Астаны, привозим в любой город, ставим на место и забираем упаковку.</p>
+        <div class="acts"><a class="btn p" href="#catalog" data-i="h3">Смотреть каталог</a><a class="btn o" href="#contact" data-i="h4">Получить консультацию</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="benefits">
+      <div class="benefit"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 15.6 7.1 18.2 8 12.7 4 8.8 9.5 8z"/></svg></i><div><b data-i="b1">Оригинал из Италии</b><span data-i="b1s">Прямые поставки с фабрик, сертификат на каждое изделие</span></div></div>
+      <div class="benefit"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="17" r="1.6"/><circle cx="17" cy="17" r="1.6"/></svg></i><div><b data-i="b2">Доставка по Казахстану</b><span data-i="b2s">Алматы, Астана, Шымкент, Караганда, Актобе, Атырау и другие города</span></div></div>
+      <div class="benefit"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="6" width="18" height="12"/><path d="M3 10h18M7 14h4"/></svg></i><div><b data-i="b3">Рассрочка 0-0-12</b><span data-i="b3s">Без переплаты. Оплата картой, Kaspi или по счёту</span></div></div>
+      <div class="benefit"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20V9l8-5 8 5v11zM10 20v-6h4v6"/></svg></i><div><b data-i="b4">Шоурумы в двух городах</b><span data-i="b4s">Алматы и Астана. Можно посидеть, потрогать и сравнить</span></div></div>
+    </div>
+  </div>
+
+  <section id="categories">
+    <div class="wrap">
+      <div class="sec-head"><div><span class="eyebrow" data-i="c0">Что мы привозим</span><h2 data-i="c1">Категории</h2></div></div>
+      <div class="cats">
+        <button class="cat" data-cat="sofa"><div class="ph"><img src="@@1540574163026-643ea20ade25@@" alt="Кожаный диван"></div><b data-i="cat-sofa">Диваны</b><span data-i="from">от</span> <span>1 450 000 ₸</span></button>
+        <button class="cat" data-cat="chair"><div class="ph"><img src="@@1586023492125-27b2c045efd7@@" alt="Жёлтое кресло"></div><b data-i="cat-chair">Кресла</b><span data-i="from">от</span> <span>420 000 ₸</span></button>
+        <button class="cat" data-cat="bed"><div class="ph"><img src="@@1616594039964-ae9021a400a0@@" alt="Кровать с мягким изголовьем"></div><b data-i="cat-bed">Кровати</b><span data-i="from">от</span> <span>1 250 000 ₸</span></button>
+        <button class="cat" data-cat="mirror"><div class="ph"><img src="@@1618220179428-22790b461013@@" alt="Круглое зеркало над комодом"></div><b data-i="cat-mirror">Зеркала</b><span data-i="from">от</span> <span>190 000 ₸</span></button>
+        <button class="cat" data-cat="table"><div class="ph"><img src="@@1577140917170-285929fb55b7@@" alt="Обеденный стол из дуба"></div><b data-i="cat-table">Столы и стулья</b><span data-i="from">от</span> <span>380 000 ₸</span></button>
+        <button class="cat" data-cat="storage"><div class="ph"><img src="@@1595428774223-ef52624120d2@@" alt="Шкаф из дуба"></div><b data-i="cat-storage">Шкафы и тумбы</b><span data-i="from">от</span> <span>310 000 ₸</span></button>
+      </div>
+    </div>
+  </section>
+
+  <section id="catalog">
+    <div class="wrap">
+      <div class="sec-head"><div><span class="eyebrow" data-i="k0">Каталог</span><h2 data-i="k1">Выберите мебель</h2><p data-i="k2">Цены указаны в тенге за базовую отделку. Нажмите на товар, чтобы увидеть все фото, размеры и варианты кожи, ткани и дерева.</p></div></div>
+      <div class="filters" id="catFilters">
+        <label data-i="f-cat">Категория</label>
+        <button class="chip on" data-cat="all" data-i="f-all">Все</button>
+        <button class="chip" data-cat="sofa" data-i="cat-sofa">Диваны</button>
+        <button class="chip" data-cat="chair" data-i="cat-chair">Кресла</button>
+        <button class="chip" data-cat="bed" data-i="cat-bed">Кровати</button>
+        <button class="chip" data-cat="mirror" data-i="cat-mirror">Зеркала</button>
+        <button class="chip" data-cat="table" data-i="cat-table">Столы и стулья</button>
+        <button class="chip" data-cat="storage" data-i="cat-storage">Шкафы и тумбы</button>
+      </div>
+      <div class="filters" id="roomFilters">
+        <label data-i="f-room">Комната</label>
+        <button class="chip on" data-room="all" data-i="f-all">Все</button>
+        <button class="chip" data-room="living" data-i="r-living">Гостиная</button>
+        <button class="chip" data-room="bedroom" data-i="r-bedroom">Спальня</button>
+        <button class="chip" data-room="dining" data-i="r-dining">Столовая</button>
+        <button class="chip" data-room="hall" data-i="r-hall">Прихожая</button>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section id="rooms">
+    <div class="wrap">
+      <div class="sec-head"><div><span class="eyebrow" data-i="r0">Подбор по комнате</span><h2 data-i="r1">Комнаты</h2></div></div>
+      <div class="rooms">
+        <button class="room" data-room="living"><img src="@@1615873968403-89e068629265@@" alt="Гостиная"><div class="lbl"><b data-i="r-living">Гостиная</b><span data-i="rl">Диваны, кресла, столики, зеркала</span></div></button>
+        <button class="room" data-room="bedroom"><img src="@@1617325247661-675ab4b64ae2@@" alt="Спальня"><div class="lbl"><b data-i="r-bedroom">Спальня</b><span data-i="rb">Кровати, тумбы, шкафы</span></div></button>
+        <button class="room" data-room="dining"><img src="@@1604578762246-41134e37f9cc@@" alt="Столовая"><div class="lbl"><b data-i="r-dining">Столовая</b><span data-i="rd">Столы, стулья, буфеты</span></div></button>
+        <button class="room" data-room="hall"><img src="@@1631679706909-1844bbd07221@@" alt="Прихожая"><div class="lbl"><b data-i="r-hall">Прихожая</b><span data-i="rh">Зеркала, консоли, банкетки</span></div></button>
+      </div>
+    </div>
+  </section>
+
+  <section id="delivery">
+    <div class="wrap">
+      <div class="sec-head"><div><span class="eyebrow" data-i="d0">Просто и понятно</span><h2 data-i="d1">Доставка и оплата</h2></div></div>
+      <div class="info">
+        <div class="box">
+          <h3 data-i="d2">Как проходит заказ</h3>
+          <ul>
+            <li data-i="d3">Выбираете мебель на сайте или в шоуруме, вместе подбираем отделку по образцам.</li>
+            <li data-i="d4">Вносите предоплату 50 %. Фабрика в Италии начинает изготовление: 8–12 недель.</li>
+            <li data-i="d5">Доставка в Алматы и Астану бесплатно. В другие города — по тарифу, считаем заранее.</li>
+            <li data-i="d6">Бригада поднимает, собирает, ставит на место и забирает упаковку. Остаток оплачиваете после приёмки.</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h3 data-i="d7">Оплата</h3>
+          <p class="big" data-i="d8">Рассрочка 0-0-12</p>
+          <ul>
+            <li data-i="d9">Kaspi, Visa, Mastercard, перевод по счёту для компаний.</li>
+            <li data-i="d10">Цены в тенге, фиксируются в договоре и не меняются с курсом.</li>
+            <li data-i="d11">Гарантия 5 лет на каркас и механизмы, 2 года на обивку.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="showrooms">
+    <div class="wrap">
+      <div class="sec-head"><div><span class="eyebrow" data-i="s0">Приходите посмотреть</span><h2 data-i="s1">Шоурумы</h2></div></div>
+      <div class="show">
+        <div><div class="ph"><img src="@@1600210492486-724fe5c67fb0@@" alt="Шоурум в Алматы"></div><div class="b"><b data-i="s2">Алматы</b><span data-i="s3">пр. Аль-Фараби, 77/8, БЦ «Esentai», 1 этаж</span><small data-i="s4">Ежедневно 10:00–20:00</small></div></div>
+        <div><div class="ph"><img src="@@1598928506311-c55ded91a20c@@" alt="Шоурум в Астане"></div><div class="b"><b data-i="s5">Астана</b><span data-i="s6">пр. Мангилик Ел, 55/20, ЖК «Talan Towers», 1 этаж</span><small data-i="s4">Ежедневно 10:00–20:00</small></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="form">
+        <div>
+          <span class="eyebrow" data-i="q0">Контакты</span>
+          <h2 style="font-size:clamp(30px,3.6vw,44px);margin:8px 0 16px" data-i="q1">Поможем выбрать</h2>
+          <p style="color:var(--ink2);max-width:46ch" data-i="q2">Оставьте номер, и дизайнер перезвонит в течение часа. Или напишите в WhatsApp: пришлём фото, размеры и цену любой модели.</p>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:22px;font-size:16px">
+            <a href="tel:+77000000000" style="font-weight:500">+7 700 000 00 00</a>
+            <a href="mailto:info@casadautore.kz">info@casadautore.kz</a>
+            <a class="btn wa" href="https://wa.me/77000000000" target="_blank" rel="noopener" style="width:max-content;margin-top:8px" data-i="q3">Написать в WhatsApp</a>
+          </div>
+        </div>
+        <form id="lead" onsubmit="return sendLead(event)">
+          <input type="text" placeholder="Имя" data-ph="q4" required>
+          <input type="tel" placeholder="+7 ___ ___ __ __" required>
+          <select class="full"><option data-i="q5">Что вас интересует</option><option data-i="cat-sofa">Диваны</option><option data-i="cat-chair">Кресла</option><option data-i="cat-bed">Кровати</option><option data-i="cat-mirror">Зеркала</option><option data-i="cat-table">Столы и стулья</option><option data-i="cat-storage">Шкафы и тумбы</option></select>
+          <textarea placeholder="Комментарий, размеры комнаты, ссылка на модель" data-ph="q6"></textarea>
+          <button class="btn p full" type="submit" data-i="q7">Отправить заявку</button>
+          <p class="full" style="font-size:12px;color:var(--mute)" data-i="q8">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div><span class="logo" style="font-size:22px">Casa d'Autore</span><p style="margin-top:12px;max-width:36ch" data-i="ft1">Итальянская мебель для дома. Официальные поставки с фабрик Италии в Казахстан.</p></div>
+      <div><b data-i="n1">Каталог</b><ul><li><a href="#catalog" data-i="cat-sofa">Диваны</a></li><li><a href="#catalog" data-i="cat-chair">Кресла</a></li><li><a href="#catalog" data-i="cat-bed">Кровати</a></li><li><a href="#catalog" data-i="cat-mirror">Зеркала</a></li><li><a href="#catalog" data-i="cat-table">Столы и стулья</a></li></ul></div>
+      <div><b data-i="ft2">Покупателям</b><ul><li><a href="#delivery" data-i="n3">Доставка и оплата</a></li><li><a href="#delivery" data-i="ft3">Рассрочка</a></li><li><a href="#delivery" data-i="ft4">Гарантия</a></li><li><a href="#showrooms" data-i="n4">Шоурумы</a></li></ul></div>
+      <div><b data-i="n5">Контакты</b><ul><li>+7 700 000 00 00</li><li>info@casadautore.kz</li><li data-i="ft5">Алматы · Астана</li><li data-i="s4">Ежедневно 10:00–20:00</li></ul></div>
+    </div>
+    <div class="bottom"><span>© 2026 Casa d'Autore · ТОО «Каса д'Ауторе»</span><span data-i="ft6">Цены в тенге, включая НДС. Фотографии интерьеров ознакомительные.</span></div>
+  </div>
+</footer>
+
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true"></div>
+
+<script>
+const P = [
+  {id:'milano',cat:'sofa',room:['living'],name:'Диван Milano',sub:'Кожа, три места',price:2450000,dims:{'Ширина':'240 см','Глубина':'95 см','Высота':'78 см','Высота сиденья':'42 см','Срок':'10–12 недель'},
+   imgs:[['@@1540574163026-643ea20ade25@@','Вид спереди'],['@@1615873968403-89e068629265@@','В интерьере'],['@@1600210492486-724fe5c67fb0@@','В гостиной']],
+   desc:'Каркас из массива бука, подушки с гусиным пером, ножки из ореха. Кожа полуанилиновая, со временем приобретает красивую патину.',
+   fin:{label:'Кожа',opts:[['Коньяк','#A8683F',0],['Тёмный шоколад','#3E2A22',0],['Песок','#C9B79A',120000],['Графит','#4A4A46',120000]]}},
+  {id:'verde',cat:'sofa',room:['living'],name:'Диван Verde',sub:'Велюр, три места',price:1450000,dims:{'Ширина':'220 см','Глубина':'92 см','Высота':'80 см','Высота сиденья':'44 см','Срок':'8–10 недель'},
+   imgs:[['@@1555041469-a586c61ea9bc@@','Вид спереди']],
+   desc:'Прямой диван на конусных ножках из ясеня. Обивка — плотный велюр, съёмные чехлы подушек. Хорошо смотрится в небольшой гостиной.',
+   fin:{label:'Велюр',opts:[['Изумруд','#1E5A4A',0],['Серый','#8C8A84',0],['Горчица','#C9A24A',0],['Пудра','#D6B4A6',0]]}},
+  {id:'como',cat:'sofa',room:['living'],name:'Угловой диван Como',sub:'Ткань, с оттоманкой',price:2980000,dims:{'Ширина':'300 см','Глубина':'170 см','Высота':'72 см','Высота сиденья':'40 см','Срок':'10–12 недель'},
+   imgs:[['@@1616486338812-3dadae4b4ace@@','В интерьере'],['@@1522771739844-6a9f6d5f14af@@','Вариант в графите']],
+   desc:'Модульный угловой диван: оттоманку можно поставить слева или справа. Глубокое сиденье для всей семьи, ткань с защитой от пятен.',
+   fin:{label:'Ткань',opts:[['Слоновая кость','#E4DCCB',0],['Графит','#3B3A37',0],['Тёплый серый','#A39C90',0],['Терракота','#B5643F',90000]]}},
+  {id:'grigio',cat:'sofa',room:['living'],name:'Диван Grigio',sub:'Ткань, три места',price:1690000,dims:{'Ширина':'230 см','Глубина':'98 см','Высота':'82 см','Высота сиденья':'45 см','Срок':'8–10 недель'},
+   imgs:[['@@1618221195710-dd6b41faaea6@@','В гостиной'],['@@1493663284031-b7e3aefcae8e@@','Вариант со стёжкой']],
+   desc:'Диван с мягкими подлокотниками-подушками. Наполнитель — пенополиуретан высокой плотности, не проседает годами.',
+   fin:{label:'Ткань',opts:[['Серый меланж','#8E8B85',0],['Бежевый','#CDBFA8',0],['Синий','#3D4F66',0]]}},
+  {id:'sole',cat:'chair',room:['living','bedroom'],name:'Кресло Sole',sub:'Ткань, ножки из массива',price:520000,dims:{'Ширина':'72 см','Глубина':'80 см','Высота':'88 см','Высота сиденья':'44 см','Срок':'6–8 недель'},
+   imgs:[['@@1586023492125-27b2c045efd7@@','В интерьере']],
+   desc:'Компактное кресло с высокой спинкой. Ставится у окна, в спальне или рядом с диваном. Ножки из тонированного бука.',
+   fin:{label:'Ткань',opts:[['Горчица','#D9A93A',0],['Оливковый','#7C7A4C',0],['Слоновая кость','#E4DCCB',0],['Графит','#3B3A37',0]]}},
+  {id:'ala',cat:'chair',room:['living','bedroom'],name:'Кресло Ala с пуфом',sub:'Ткань, комплект',price:690000,dims:{'Ширина':'80 см','Глубина':'90 см','Высота':'102 см','Пуф':'50 × 40 см','Срок':'6–8 недель'},
+   imgs:[['@@1550226891-ef816aed4a98@@','Кресло с пуфом']],
+   desc:'Кресло с «ушами» для чтения и отдыха. В комплекте круглый пуф. Ткань — плотная рогожка, легко чистится.',
+   fin:{label:'Ткань',opts:[['Шафран','#E0A54A',0],['Бежевый','#CDBFA8',0],['Серый','#8E8B85',0]]}},
+  {id:'terra',cat:'chair',room:['living'],name:'Кресло Terra',sub:'Велюр, поворотное',price:640000,dims:{'Ширина':'90 см','Глубина':'86 см','Высота':'70 см','Высота сиденья':'42 см','Срок':'8–10 недель'},
+   imgs:[['@@1618220179428-22790b461013@@','В интерьере'],['@@1556228453-efd6c1ff04f6@@','Вариант в пудре']],
+   desc:'Низкое круглое кресло на поворотном основании. Мягкие валики по периметру. Заметный акцент для гостиной.',
+   fin:{label:'Велюр',opts:[['Терракота','#C9622F',0],['Пудра','#C8A6A6',0],['Слоновая кость','#E4DCCB',0]]}},
+  {id:'bianca',cat:'chair',room:['bedroom','living'],name:'Кресло Bianca',sub:'Каретная стяжка',price:420000,dims:{'Ширина':'68 см','Глубина':'70 см','Высота':'82 см','Высота сиденья':'46 см','Срок':'6–8 недель'},
+   imgs:[['@@1567538096630-e0c55bd6374c@@','Вид спереди']],
+   desc:'Небольшое кресло для спальни или туалетного столика. Точёные ножки из бука, спинка с каретной стяжкой.',
+   fin:{label:'Ткань',opts:[['Слоновая кость','#EDE7DA',0],['Пудра','#D6B4A6',0],['Серый','#B5B0A6',0]]}},
+  {id:'notte',cat:'bed',room:['bedroom'],name:'Кровать Notte',sub:'Мягкое изголовье, 180 × 200',price:1850000,dims:{'Спальное место':'180 × 200 см','Ширина':'204 см','Длина':'226 см','Высота изголовья':'110 см','Срок':'10–12 недель'},
+   imgs:[['@@1616594039964-ae9021a400a0@@','В спальне']],
+   desc:'Кровать с вертикальной стёжкой изголовья и латунными ножками. Подъёмный механизм и короб для белья — по запросу.',
+   fin:{label:'Ткань',opts:[['Светло-серый','#D7D3CB',0],['Слоновая кость','#E4DCCB',0],['Графит','#3B3A37',0],['Изумруд','#1E5A4A',80000]]}},
+  {id:'legno',cat:'bed',room:['bedroom'],name:'Кровать Legno',sub:'Массив дуба, 160 × 200',price:1250000,dims:{'Спальное место':'160 × 200 см','Ширина':'180 см','Длина':'215 см','Высота':'75 см','Срок':'8–10 недель'},
+   imgs:[['@@1617325247661-675ab4b64ae2@@','В спальне'],['@@1616627561950-9f746e330187@@','Изголовье, дуб']],
+   desc:'Низкая кровать-подиум из массива дуба с мягким изголовьем. Дерево покрыто маслом, приятно на ощупь.',
+   fin:{label:'Дерево',opts:[['Дуб натуральный','#C8A778',0],['Дуб выбеленный','#DCCDB2',0],['Орех','#6B4A33',150000]]}},
+  {id:'regale',cat:'bed',room:['bedroom'],name:'Кровать Regale',sub:'Каретная стяжка, 200 × 200',price:2350000,dims:{'Спальное место':'200 × 200 см','Ширина':'236 см','Длина':'230 см','Высота изголовья':'135 см','Срок':'12–14 недель'},
+   imgs:[['@@1505693416388-ac5ce068fe85@@','В спальне']],
+   desc:'Классическая кровать с высоким изголовьем и латунными гвоздиками по кромке. В комплекте может идти банкетка.',
+   fin:{label:'Ткань',opts:[['Слоновая кость','#E4DCCB',0],['Серо-бежевый','#B8AD9C',0],['Тёмно-синий','#2C3A55',0]]}},
+  {id:'nuvola',cat:'bed',room:['bedroom'],name:'Кровать Nuvola',sub:'Ткань, 160 × 200',price:1290000,dims:{'Спальное место':'160 × 200 см','Ширина':'176 см','Длина':'218 см','Высота изголовья':'95 см','Срок':'8–10 недель'},
+   imgs:[['@@1595526114035-0d45ed16cfbf@@','В спальне'],['@@1550581190-9c1c48d21d6c@@','С тумбой Notte']],
+   desc:'Простая кровать с невысоким мягким изголовьем. Подходит для небольшой спальни. Основание — ортопедические ламели.',
+   fin:{label:'Ткань',opts:[['Серый','#8E8B85',0],['Бежевый','#CDBFA8',0],['Оливковый','#7C7A4C',0]]}},
+  {id:'luna',cat:'mirror',room:['living','dining','hall'],name:'Зеркало Luna',sub:'Круглое, латунная рама',price:290000,dims:{'Диаметр':'100 см','Глубина рамы':'3 см','Вес':'12 кг','Крепление':'В комплекте','Срок':'В наличии'},
+   imgs:[['@@1617806118233-18e1de247200@@','В столовой'],['@@1618220179428-22790b461013@@','Над комодом']],
+   desc:'Круглое зеркало в тонкой латунной раме. Зеркальное полотно с фаской, задняя стенка из МДФ. Вешается на два крючка.',
+   fin:{label:'Рама',opts:[['Латунь','#A98A4E',0],['Чёрный металл','#2A2925',0],['Белый','#E9E5DC',0]]}},
+  {id:'sole-mirror',cat:'mirror',room:['living','hall'],name:'Зеркала Rattan',sub:'Комплект из двух, ротанг',price:190000,dims:{'Диаметры':'70 и 55 см','Материал рамы':'Ротанг, плетение вручную','Вес':'4 и 3 кг','Срок':'В наличии'},
+   imgs:[['@@1631679706909-1844bbd07221@@','В гостиной']],
+   desc:'Два круглых зеркала в плетёных рамах. Вешаются рядом или в разных комнатах. Хорошо смотрятся в светлой прихожей.',
+   fin:{label:'Ротанг',opts:[['Натуральный','#C9A66B',0],['Тёмный','#7A5A3A',0]]}},
+  {id:'rovere',cat:'table',room:['dining'],name:'Стол Rovere со стульями',sub:'Дуб, стол + 6 стульев',price:1680000,dims:{'Стол':'180 × 90 × 75 см','Стул':'52 × 50 × 78 см','Мест':'6','Срок':'10–12 недель'},
+   imgs:[['@@1577140917170-285929fb55b7@@','Стол со стульями']],
+   desc:'Обеденная группа из массива дуба: стол и шесть стульев с кожаными сиденьями. Столешница на 8 человек — по запросу.',
+   fin:{label:'Дерево',opts:[['Дуб натуральный','#C8A778',0],['Дуб копчёный','#7A5A3A',120000],['Орех','#6B4A33',180000]]}},
+  {id:'teak',cat:'table',room:['dining'],name:'Стол Teak',sub:'Массив, 240 см',price:2100000,dims:{'Столешница':'240 × 100 см','Высота':'76 см','Толщина':'4 см','Мест':'8–10','Срок':'12–14 недель'},
+   imgs:[['@@1604578762246-41134e37f9cc@@','В столовой']],
+   desc:'Большой стол для семейных ужинов. Столешница из цельных ламелей, ноги-козлы. Стулья Teak продаются отдельно.',
+   fin:{label:'Дерево',opts:[['Тик','#8B5E3C',0],['Орех','#6B4A33',0],['Дуб','#C8A778',-150000]]}},
+  {id:'tondo',cat:'table',room:['dining','living'],name:'Стол Tondo',sub:'Круглый, 110 см',price:380000,dims:{'Диаметр':'110 см','Высота':'75 см','Мест':'4','Срок':'В наличии'},
+   imgs:[['@@1519710164239-da123dc03ef4@@','В интерьере']],
+   desc:'Круглый стол из выбеленного ясеня для кухни или небольшой столовой. Стул Tondo в тон — 95 000 ₸.',
+   fin:{label:'Дерево',opts:[['Ясень выбеленный','#DCCDB2',0],['Ясень натуральный','#C8A778',0],['Чёрный','#2A2925',0]]}},
+  {id:'quercia',cat:'storage',room:['bedroom','hall'],name:'Шкаф Quercia',sub:'Подвесной, с открытыми полками',price:980000,dims:{'Ширина':'120 см','Глубина':'40 см','Высота':'210 см','Полок':'10','Срок':'8–10 недель'},
+   imgs:[['@@1595428774223-ef52624120d2@@','В интерьере']],
+   desc:'Подвесной шкаф с двумя дверями и колонкой открытых полок. Крепится к стене, под ним легко убирать.',
+   fin:{label:'Дерево',opts:[['Дуб натуральный','#C8A778',0],['Дуб выбеленный','#DCCDB2',0],['Орех','#6B4A33',120000]]}},
+  {id:'muro',cat:'storage',room:['living'],name:'ТВ-стенка Muro',sub:'Подвесная, 4 модуля',price:1150000,dims:{'Ширина':'260 см','Глубина':'40 см','Высота набора':'150 см','Модулей':'4','Срок':'8–10 недель'},
+   imgs:[['@@1594026112284-02bb6f3352fe@@','В гостиной']],
+   desc:'Набор подвесных модулей под телевизор: тумба, полка и два ящика. Компонуются под размер стены.',
+   fin:{label:'Фасады',opts:[['Белый матовый','#EDE9E1',0],['Дуб','#C8A778',0],['Графит','#3B3A37',0]]}},
+  {id:'tumba',cat:'storage',room:['bedroom'],name:'Тумба Notte',sub:'Прикроватная, 1 ящик',price:310000,dims:{'Ширина':'50 см','Глубина':'40 см','Высота':'55 см','Срок':'В наличии'},
+   imgs:[['@@1550581190-9c1c48d21d6c@@','У кровати'],['@@1550226891-ef816aed4a98@@','С креслом Ala']],
+   desc:'Тумба на конусных ножках с одним ящиком и открытой полкой. Подходит к кроватям Notte, Legno и Nuvola.',
+   fin:{label:'Дерево',opts:[['Дуб + белый','#DCCDB2',0],['Орех','#6B4A33',40000],['Дуб натуральный','#C8A778',0]]}}
+];
+const CAT={sofa:'Диваны',chair:'Кресла',bed:'Кровати',mirror:'Зеркала',table:'Столы и стулья',storage:'Шкафы и тумбы'};
+const CATKZ={sofa:'Дивандар',chair:'Креслолар',bed:'Кереуеттер',mirror:'Айналар',table:'Үстелдер мен орындықтар',storage:'Шкафтар мен тумбалар'};
+const fmt=n=>n.toLocaleString('ru-RU').replace(/,/g,' ')+' ₸';
+let cat='all',room='all',lang='ru';
+
+function render(){
+  const g=document.getElementById('grid');
+  const list=P.filter(p=>(cat==='all'||p.cat===cat)&&(room==='all'||p.room.includes(room)));
+  if(!list.length){g.innerHTML='<div class="empty">'+(lang==='kz'?'Бұл сүзгі бойынша тауар жоқ. Басқа санатты таңдаңыз.':'По этим фильтрам ничего нет. Выберите другую категорию или комнату.')+'</div>';return}
+  g.innerHTML=list.map(p=>`<button class="card" data-id="${p.id}">
+    <div class="ph"><img src="${p.imgs[0][0]}" alt="${p.name}">${p.imgs[1]?`<img class="alt" src="${p.imgs[1][0]}" alt="">`:''}<span class="n">${p.imgs.length} ${lang==='kz'?'фото':'фото'}</span></div>
+    <div class="body"><span class="cat-l">${(lang==='kz'?CATKZ:CAT)[p.cat]}</span><h3>${p.name}</h3><span class="sub">${p.sub}</span>
+    <span class="dims">${Object.entries(p.dims).slice(0,3).map(e=>e[1]).join(' · ')}</span>
+    <div class="row"><span class="price">${fmt(p.price)}</span><span class="more">${lang==='kz'?'Толығырақ':'Подробнее'}</span></div></div></button>`).join('');
+}
+function setCat(c){cat=c;document.querySelectorAll('#catFilters .chip').forEach(b=>b.classList.toggle('on',b.dataset.cat===c));render()}
+function setRoom(r){room=r;document.querySelectorAll('#roomFilters .chip').forEach(b=>b.classList.toggle('on',b.dataset.room===r));render()}
+document.getElementById('catFilters').addEventListener('click',e=>{const b=e.target.closest('.chip');if(b)setCat(b.dataset.cat)});
+document.getElementById('roomFilters').addEventListener('click',e=>{const b=e.target.closest('.chip');if(b)setRoom(b.dataset.room)});
+document.querySelectorAll('.cat[data-cat]').forEach(b=>b.addEventListener('click',()=>{setRoom('all');setCat(b.dataset.cat);document.getElementById('catalog').scrollIntoView({behavior:'smooth'})}));
+document.querySelectorAll('.room[data-room]').forEach(b=>b.addEventListener('click',()=>{setCat('all');setRoom(b.dataset.room);document.getElementById('catalog').scrollIntoView({behavior:'smooth'})}));
+document.getElementById('grid').addEventListener('click',e=>{const c=e.target.closest('.card');if(c)openModal(c.dataset.id)});
+
+/* modal */
+let cur=null,idx=0,fin=0;
+function openModal(id){
+  cur=P.find(p=>p.id===id);idx=0;fin=0;
+  const m=document.getElementById('modal');m.hidden=false;document.body.style.overflow='hidden';
+  drawModal();m.querySelector('.close').focus();
+}
+function drawModal(){
+  const p=cur,m=document.getElementById('modal');
+  const price=p.price+p.fin.opts[fin][2];
+  const t=lang==='kz';
+  m.innerHTML=`<div class="win">
+    <button class="close" aria-label="Закрыть">×</button>
+    <div class="gal">
+      <div class="main"><img src="${p.imgs[idx][0]}" alt="${p.name}"><span class="cap">${p.imgs[idx][1]}</span>
+        ${p.imgs.length>1?`<div class="arrows"><button data-d="-1" aria-label="Предыдущее фото">‹</button><button data-d="1" aria-label="Следующее фото">›</button></div>`:''}</div>
+      <div class="thumbs">${p.imgs.map((im,i)=>`<button data-i="${i}" class="${i===idx?'on':''}"><img src="${im[0]}" alt=""></button>`).join('')}</div>
+    </div>
+    <div class="det">
+      <span class="eyebrow">${(t?CATKZ:CAT)[p.cat]} · ${t?'Италия':'Италия'}</span>
+      <h2>${p.name}</h2>
+      <p class="desc">${p.desc}</p>
+      <div class="price">${fmt(price)}<small>${t?'таңдалған әрлеуде · 0-0-12 бөліп төлеу ':'в выбранной отделке · в рассрочку '}${fmt(Math.round(price/12/1000)*1000)}/${t?'ай':'мес'}</small></div>
+      <div class="fin"><div class="lab"><span>${p.fin.label}</span><b>${p.fin.opts[fin][0]}${p.fin.opts[fin][2]?' · '+(p.fin.opts[fin][2]>0?'+':'')+fmt(p.fin.opts[fin][2]):''}</b></div>
+        <div class="sw">${p.fin.opts.map((o,i)=>`<button data-f="${i}" class="${i===fin?'on':''}" style="background:${o[1]}" title="${o[0]}" aria-label="${o[0]}"></button>`).join('')}</div></div>
+      <dl class="spec">${Object.entries(p.dims).map(e=>`<dt>${e[0]}</dt><dd>${e[1]}</dd>`).join('')}</dl>
+      <div class="acts">
+        <a class="btn wa" target="_blank" rel="noopener" href="https://wa.me/77000000000?text=${encodeURIComponent('Здравствуйте! Интересует '+p.name+', отделка '+p.fin.opts[fin][0]+', цена '+fmt(price))}">${t?'WhatsApp арқылы тапсырыс беру':'Заказать в WhatsApp'}</a>
+        <a class="btn o" href="#contact" onclick="closeModal()">${t?'Кеңес алу':'Получить консультацию'}</a>
+      </div>
+      <p class="note">${t?'Алматы мен Астанаға жеткізу тегін. Кепілдік 5 жыл.':'Доставка по Алматы и Астане бесплатно. Гарантия 5 лет. Образцы отделок покажем в шоуруме или привезём.'}</p>
+    </div></div>`;
+  m.querySelector('.close').onclick=closeModal;
+  m.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{idx=(idx+ +b.dataset.d+p.imgs.length)%p.imgs.length;drawModal()});
+  m.querySelectorAll('.thumbs [data-i]').forEach(b=>b.onclick=()=>{idx=+b.dataset.i;drawModal()});
+  m.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{fin=+b.dataset.f;drawModal()});
+}
+function closeModal(){document.getElementById('modal').hidden=true;document.body.style.overflow=''}
+document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
+document.addEventListener('keydown',e=>{if(document.getElementById('modal').hidden)return;if(e.key==='Escape')closeModal();if(e.key==='ArrowRight'&&cur){idx=(idx+1)%cur.imgs.length;drawModal()}if(e.key==='ArrowLeft'&&cur){idx=(idx-1+cur.imgs.length)%cur.imgs.length;drawModal()}});
+
+/* lead form */
+function sendLead(e){e.preventDefault();const f=e.target;f.innerHTML='<div class="ok">'+(lang==='kz'?'Рақмет! Дизайнер бір сағат ішінде хабарласады.':'Спасибо! Дизайнер перезвонит в течение часа.')+'</div>';return false}
+
+/* language */
+const KZ={tag:'Италия жиһазы · Қазақстан',n1:'Каталог',n2:'Бөлмелер',n3:'Жеткізу және төлем',n4:'Шоурумдар',n5:'Байланыс',wa:'WhatsApp',
+ h0:'Италияда жасалған',h1:'Бүкіл Қазақстанға жеткізілетін Италия жиһазы',h2:'Италия фабрикаларының дивандары, креслолары, кереуеттері, айналары мен үстелдері. Алматы мен Астанадағы шоурумдарда көрсетеміз, кез келген қалаға жеткіземіз, орнына қоямыз.',h3:'Каталогты көру',h4:'Кеңес алу',
+ b1:'Италиядан түпнұсқа',b1s:'Фабрикалардан тікелей жеткізу, әр бұйымға сертификат',b2:'Қазақстан бойынша жеткізу',b2s:'Алматы, Астана, Шымкент, Қарағанды, Ақтөбе, Атырау және басқа қалалар',b3:'0-0-12 бөліп төлеу',b3s:'Артық төлемсіз. Карта, Kaspi немесе шот арқылы төлеу',b4:'Екі қалада шоурум',b4s:'Алматы және Астана. Отырып, ұстап, салыстыруға болады',
+ c0:'Біз не әкелеміз',c1:'Санаттар',from:'бастап','cat-sofa':'Дивандар','cat-chair':'Креслолар','cat-bed':'Кереуеттер','cat-mirror':'Айналар','cat-table':'Үстелдер мен орындықтар','cat-storage':'Шкафтар мен тумбалар',
+ k0:'Каталог',k1:'Жиһаз таңдаңыз',k2:'Бағалар теңгемен, базалық әрлеу үшін көрсетілген. Барлық фотоны, өлшемдерді және тері, мата мен ағаш нұсқаларын көру үшін тауарды басыңыз.','f-cat':'Санат','f-all':'Барлығы','f-room':'Бөлме','r-living':'Қонақ бөлме','r-bedroom':'Жатын бөлме','r-dining':'Ас бөлме','r-hall':'Кіреберіс',
+ r0:'Бөлме бойынша таңдау',r1:'Бөлмелер',rl:'Дивандар, креслолар, үстелшелер, айналар',rb:'Кереуеттер, тумбалар, шкафтар',rd:'Үстелдер, орындықтар, буфеттер',rh:'Айналар, консольдер, банкеткалар',
+ d0:'Қарапайым және түсінікті',d1:'Жеткізу және төлем',d2:'Тапсырыс қалай өтеді',d3:'Жиһазды сайттан немесе шоурумнан таңдайсыз, әрлеуді үлгілер бойынша бірге таңдаймыз.',d4:'50 % алдын ала төлем жасайсыз. Италиядағы фабрика жасай бастайды: 8–12 апта.',d5:'Алматы мен Астанаға жеткізу тегін. Басқа қалаларға — тариф бойынша, алдын ала есептейміз.',d6:'Бригада көтереді, жинайды, орнына қояды және орамды алып кетеді. Қалғанын қабылдағаннан кейін төлейсіз.',d7:'Төлем',d8:'0-0-12 бөліп төлеу',d9:'Kaspi, Visa, Mastercard, компаниялар үшін шот арқылы аудару.',d10:'Бағалар теңгемен, шартта бекітіледі және бағаммен өзгермейді.',d11:'Қаңқа мен механизмдерге 5 жыл, қаптамаға 2 жыл кепілдік.',
+ s0:'Келіп көріңіз',s1:'Шоурумдар',s2:'Алматы',s3:'Әл-Фараби даңғ., 77/8, «Esentai» БО, 1 қабат',s4:'Күн сайын 10:00–20:00',s5:'Астана',s6:'Мәңгілік Ел даңғ., 55/20, «Talan Towers» ТК, 1 қабат',
+ q0:'Байланыс',q1:'Таңдауға көмектесеміз',q2:'Нөміріңізді қалдырыңыз, дизайнер бір сағат ішінде хабарласады. Немесе WhatsApp-қа жазыңыз: кез келген модельдің фотосын, өлшемін және бағасын жібереміз.',q3:'WhatsApp-қа жазу',q4:'Аты',q5:'Сізді не қызықтырады',q6:'Пікір, бөлме өлшемі, модельге сілтеме',q7:'Өтінім жіберу',q8:'Батырманы басу арқылы жеке деректерді өңдеуге келісесіз.',
+ ft1:'Үйге арналған Италия жиһазы. Италия фабрикаларынан Қазақстанға ресми жеткізу.',ft2:'Сатып алушыларға',ft3:'Бөліп төлеу',ft4:'Кепілдік',ft5:'Алматы · Астана',ft6:'Бағалар теңгемен, ҚҚС қоса. Интерьер фотолары танысу үшін.'};
+const RU={};
+document.querySelectorAll('[data-i]').forEach(el=>{RU[el.dataset.i]=RU[el.dataset.i]||el.textContent});
+document.querySelectorAll('[data-ph]').forEach(el=>{RU[el.dataset.ph]=el.placeholder});
+function setLang(l){
+  lang=l;const D=l==='kz'?KZ:RU;
+  document.querySelectorAll('[data-i]').forEach(el=>{if(D[el.dataset.i]!==undefined)el.textContent=D[el.dataset.i]});
+  document.querySelectorAll('[data-ph]').forEach(el=>{if(D[el.dataset.ph]!==undefined)el.placeholder=D[el.dataset.ph]});
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.lang===l));
+  document.documentElement.lang=l==='kz'?'kk':'ru';
+  render();
+}
+document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
+document.querySelectorAll('#mnav a').forEach(a=>a.onclick=()=>document.getElementById('mnav').classList.remove('open'));
+render();
+</script>

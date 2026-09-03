@@ -1,0 +1,823 @@
+<title>Casa d'Autore</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --avorio:#F2EDE3;
+  --avorio-2:#E9E2D5;
+  --grigio:#8A8378;
+  --grigio-2:#B9B2A6;
+  --grafite:#26241F;
+  --noce:#4A3628;
+  --ottone:#A98A4E;
+  --terra:#B5643F;
+
+  --bg:var(--avorio);
+  --bg-2:var(--avorio-2);
+  --bg-3:#FBF9F4;
+  --ink:var(--grafite);
+  --ink-2:var(--noce);
+  --mute:var(--grigio);
+  --line:#D6CEC0;
+  --accent:var(--ottone);
+  --accent-2:var(--terra);
+  --wire:#CDC5B6;
+  --wire-fill:#E3DCCE;
+  --wire-img:#B7AE9F;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1E1C19; --bg-2:#26231F; --bg-3:#2C2925;
+    --ink:#EFE9DD; --ink-2:#D9CDBB; --mute:#9A9284;
+    --line:#3B3731; --accent:#C7A65F; --accent-2:#C8794F;
+    --wire:#4A453D; --wire-fill:#33302A; --wire-img:#5A5449;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1E1C19; --bg-2:#26231F; --bg-3:#2C2925;
+  --ink:#EFE9DD; --ink-2:#D9CDBB; --mute:#9A9284;
+  --line:#3B3731; --accent:#C7A65F; --accent-2:#C8794F;
+  --wire:#4A453D; --wire-fill:#33302A; --wire-img:#5A5449;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Jost","Helvetica Neue",Arial,sans-serif;
+  font-weight:300;font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+h1,h2,h3,h4{font-family:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;font-weight:400;margin:0;text-wrap:balance;line-height:1.1}
+p{margin:0}
+strong{font-weight:500}
+em{font-style:italic}
+.mono{font-family:"IBM Plex Mono","SFMono-Regular",Consolas,monospace;font-size:.82em;font-variant-numeric:tabular-nums}
+.eyebrow{font-family:"Jost",sans-serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);font-weight:400}
+.rule{height:1px;background:var(--line);border:0;margin:0}
+
+/* ----- frame ----- */
+.frame{display:grid;grid-template-columns:220px minmax(0,1fr);max-width:1240px;margin:0 auto;padding:0 40px}
+nav.index{position:sticky;top:0;align-self:start;height:100vh;padding:56px 0 40px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:32px}
+nav.index .brand{font-family:"Bodoni Moda",serif;font-size:22px;letter-spacing:.02em;line-height:1}
+nav.index .brand small{display:block;font-family:"Jost";font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute);margin-top:10px;font-weight:400}
+nav.index ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+nav.index a{text-decoration:none;font-size:13px;letter-spacing:.04em;color:var(--mute);display:block;padding-right:24px;transition:color .2s}
+nav.index a:hover,nav.index a:focus-visible{color:var(--ink);outline:none}
+nav.index a span{display:block;font-size:10px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:2px;color:var(--accent)}
+nav.index .meta{margin-top:auto;font-size:11px;color:var(--mute);letter-spacing:.06em;line-height:1.7}
+main{padding:56px 0 120px 64px;min-width:0}
+
+/* ----- cover ----- */
+.cover{display:grid;grid-template-columns:1fr;gap:40px;padding-bottom:64px;border-bottom:1px solid var(--line)}
+.cover h1{font-size:clamp(44px,6vw,80px);line-height:.98;letter-spacing:-.01em}
+.cover h1 em{color:var(--ink-2)}
+.cover .lede{max-width:62ch;font-size:19px;line-height:1.55;color:var(--ink-2)}
+.cover .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;border-top:1px solid var(--line);padding-top:20px}
+.cover .facts div{font-size:13px;line-height:1.5}
+.cover .facts .eyebrow{margin-bottom:6px}
+
+/* ----- sections ----- */
+section.part{padding:72px 0 8px}
+section.part>header{display:grid;grid-template-columns:120px minmax(0,1fr);gap:24px;align-items:end;margin-bottom:40px}
+section.part>header .num{font-family:"Bodoni Moda",serif;font-size:56px;line-height:.8;color:var(--accent);font-style:italic}
+section.part>header h2{font-size:clamp(30px,3.4vw,42px)}
+section.part>header p{color:var(--mute);margin-top:10px;max-width:60ch}
+.block{margin:0 0 56px}
+.block h3{font-size:26px;margin-bottom:14px}
+.block h4{font-family:"Jost";font-weight:500;font-size:15px;letter-spacing:.02em;margin:26px 0 8px}
+.prose{max-width:66ch;display:flex;flex-direction:column;gap:14px}
+.prose ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+.prose li::marker{color:var(--accent)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+
+/* ----- palette ----- */
+.swatches{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.sw{display:flex;flex-direction:column;gap:8px}
+.sw i{display:block;aspect-ratio:1/1.2;border:1px solid var(--line)}
+.sw b{font-weight:500;font-size:13px}
+.sw span{font-size:11px;color:var(--mute);line-height:1.4}
+.sw .mono{display:block;color:var(--mute)}
+
+/* ----- type specimen ----- */
+.specimen{border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:28px 0}
+.specimen .d{font-family:"Bodoni Moda",serif;font-size:54px;line-height:1;letter-spacing:-.01em}
+.specimen .d small{display:block;font-family:"Jost";font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);margin-top:12px}
+.scale{display:flex;flex-direction:column;gap:6px;font-size:13px}
+.scale div{display:grid;grid-template-columns:90px 1fr 70px;gap:12px;align-items:baseline;border-bottom:1px dashed var(--line);padding:4px 0}
+.scale .r{font-family:"Bodoni Moda",serif}
+
+/* ----- tables ----- */
+.tbl{overflow-x:auto;border-top:1px solid var(--ink)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:640px}
+th{text-align:left;font-weight:500;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);padding:12px 12px 10px 0;border-bottom:1px solid var(--line);vertical-align:bottom}
+td{padding:11px 12px 11px 0;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+td:first-child{font-weight:400;color:var(--ink)}
+td.mono,th.mono{white-space:nowrap}
+
+/* ----- wireframes ----- */
+.wire{border:1px solid var(--wire);background:var(--bg-3);padding:10px;display:flex;flex-direction:column;gap:6px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--mute);letter-spacing:.02em}
+.wire .row{display:grid;gap:6px}
+.wire .b{border:1px solid var(--wire);background:var(--wire-fill);padding:8px 10px;min-height:34px;display:flex;align-items:flex-start;gap:8px;line-height:1.35}
+.wire .b.img{background:repeating-linear-gradient(135deg,var(--wire-img) 0 1px,transparent 1px 7px);background-color:var(--wire-fill);min-height:60px}
+.wire .b.tall{min-height:120px}
+.wire .b.hero{min-height:150px}
+.wire .b em{color:var(--accent);font-style:normal;flex:none}
+.wireframe-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.wireframe-head .eyebrow{color:var(--ink)}
+
+/* ----- steps ----- */
+.steps{display:flex;flex-direction:column;border-top:1px solid var(--ink)}
+.step{display:grid;grid-template-columns:56px 200px minmax(0,1fr);gap:24px;padding:20px 0;border-bottom:1px solid var(--line)}
+.step .n{font-family:"Bodoni Moda",serif;font-size:26px;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}
+.step .t{font-weight:500;font-size:15px;line-height:1.35}
+.step .t small{display:block;font-weight:300;color:var(--mute);font-size:12px;margin-top:4px;letter-spacing:.04em}
+.step .d{font-size:15px;color:var(--ink-2);max-width:62ch;line-height:1.55}
+.step .d ul{margin:6px 0 0;padding-left:16px;display:flex;flex-direction:column;gap:3px}
+
+/* ----- copy prototypes ----- */
+.copy{background:var(--bg-3);border:1px solid var(--line);padding:32px 36px;display:flex;flex-direction:column;gap:14px;max-width:760px}
+.copy .eyebrow{color:var(--accent)}
+.copy h3{font-size:clamp(28px,3.2vw,40px);line-height:1.08;margin:0}
+.copy p{max-width:58ch;color:var(--ink-2)}
+.copy .cta{display:inline-block;font-size:11px;letter-spacing:.24em;text-transform:uppercase;border-bottom:1px solid var(--ink);padding-bottom:4px;width:max-content;font-weight:400;color:var(--ink)}
+.copy-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.copy-grid .copy{padding:26px 28px}
+.copy-grid .copy h3{font-size:26px}
+.note{font-size:13px;color:var(--mute);border-left:1px solid var(--accent);padding-left:14px;max-width:62ch;line-height:1.55}
+
+/* ----- product card mock ----- */
+.pcard{display:grid;grid-template-columns:1.1fr 1fr;border:1px solid var(--line);background:var(--bg-3)}
+.pcard .g{padding:18px;display:flex;flex-direction:column;gap:8px;border-right:1px solid var(--line)}
+.pcard .g .main{aspect-ratio:4/3;background:linear-gradient(160deg,var(--bg-2),var(--wire-img));position:relative}
+.pcard .g .main span{position:absolute;left:12px;bottom:10px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
+.pcard .g .thumbs{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+.pcard .g .thumbs i{display:block;aspect-ratio:1;background:var(--wire-fill);border:1px solid var(--line);font-style:normal;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);display:flex;align-items:flex-end;padding:4px;line-height:1.1}
+.pcard .g .thumbs i.on{border-color:var(--ink)}
+.pcard .i{padding:22px 24px;display:flex;flex-direction:column;gap:14px}
+.pcard .i h3{font-size:30px}
+.pcard .i .price{font-size:18px;font-weight:400}
+.pcard .i .price small{font-size:12px;color:var(--mute);margin-left:8px}
+.pcard .fin{display:flex;flex-direction:column;gap:6px}
+.pcard .fin .lab{display:flex;justify-content:space-between;font-size:12px;color:var(--mute);letter-spacing:.04em}
+.pcard .fin .lab b{color:var(--ink);font-weight:400}
+.pcard .dots{display:flex;gap:6px}
+.pcard .dots i{width:26px;height:26px;border-radius:50%;border:1px solid var(--line);display:block}
+.pcard .dots i.on{outline:1px solid var(--ink);outline-offset:2px}
+.pcard .dims{font-size:12.5px;color:var(--ink-2);display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;border-top:1px solid var(--line);padding-top:12px}
+.pcard .btns{display:flex;gap:10px;margin-top:4px;flex-wrap:wrap}
+.pcard .btn{font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:12px 18px;border:1px solid var(--ink);font-weight:400}
+.pcard .btn.p{background:var(--ink);color:var(--bg)}
+
+/* ----- code ----- */
+pre{background:var(--bg-3);border:1px solid var(--line);padding:18px 20px;overflow-x:auto;font-family:"IBM Plex Mono",monospace;font-size:12.5px;line-height:1.55;margin:0;color:var(--ink-2)}
+pre .c{color:var(--mute)}
+
+/* ----- shot list ----- */
+.shots{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.shot{border:1px solid var(--line);padding:12px;display:flex;flex-direction:column;gap:8px}
+.shot .ph{aspect-ratio:4/3;background:var(--wire-fill);border:1px solid var(--line);display:flex;align-items:flex-end;padding:8px;font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--mute);letter-spacing:.04em}
+.shot .ph.macro{background:radial-gradient(circle at 30% 40%,var(--wire-img),var(--wire-fill) 60%)}
+.shot .ph.wide{background:linear-gradient(180deg,var(--bg-2) 55%,var(--wire-img) 55%)}
+.shot b{font-weight:500;font-size:13px}
+.shot span{font-size:12px;color:var(--mute);line-height:1.45}
+
+.kv{display:grid;grid-template-columns:200px 1fr;gap:8px 20px;font-size:14px;border-top:1px solid var(--ink);padding-top:10px}
+.kv dt{color:var(--mute);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:6px 0;border-bottom:1px solid var(--line)}
+.kv dd{margin:0;padding:6px 0;border-bottom:1px solid var(--line);line-height:1.5}
+.kv{margin:0}
+
+.dont{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.dont div{border-top:1px solid var(--ink);padding-top:12px;font-size:14px}
+.dont .eyebrow{margin-bottom:10px;display:block}
+.dont ul{margin:0;padding-left:16px;display:flex;flex-direction:column;gap:6px}
+.dont .no li::marker{color:var(--accent-2)}
+.dont .yes li::marker{color:var(--accent)}
+
+footer.end{margin-top:80px;border-top:1px solid var(--ink);padding-top:20px;display:flex;justify-content:space-between;font-size:12px;color:var(--mute);letter-spacing:.06em}
+
+@media (max-width:980px){
+  .frame{grid-template-columns:1fr;padding:0 20px}
+  nav.index{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:32px 0 24px}
+  nav.index ol{flex-direction:row;flex-wrap:wrap;gap:8px 20px}
+  nav.index .meta{display:none}
+  main{padding:40px 0 80px}
+  .two,.three,.copy-grid,.dont,.specimen,.pcard{grid-template-columns:1fr}
+  .pcard .g{border-right:0;border-bottom:1px solid var(--line)}
+  .swatches{grid-template-columns:repeat(3,1fr)}
+  .shots{grid-template-columns:repeat(2,1fr)}
+  .step{grid-template-columns:40px 1fr;grid-template-rows:auto auto}
+  .step .d{grid-column:2}
+  .cover .facts{grid-template-columns:1fr 1fr}
+  section.part>header{grid-template-columns:1fr}
+  .kv{grid-template-columns:1fr}
+}
+</style>
+
+<div class="frame">
+<nav class="index" aria-label="Оглавление">
+  <div class="brand">Casa d'Autore<small>Концепт · Структура · ТЗ</small></div>
+  <ol>
+    <li><a href="#concept"><span>I</span>Концепция и визуальная система</a></li>
+    <li><a href="#home"><span>II</span>Главная страница</a></li>
+    <li><a href="#catalog"><span>III</span>Каталог и фильтры</a></li>
+    <li><a href="#product"><span>IV</span>Карточка товара</a></li>
+    <li><a href="#copy"><span>V</span>Текстовые прототипы</a></li>
+    <li><a href="#tech"><span>VI</span>ТЗ: 360° и конфигуратор</a></li>
+    <li><a href="#photo"><span>VII</span>Арт-дирекшн и съёмка</a></li>
+  </ol>
+  <div class="meta">Версия 1.0<br>Сентябрь 2026<br>Для команды дизайна и разработки</div>
+</nav>
+
+<main>
+
+<header class="cover">
+  <div>
+    <p class="eyebrow" style="margin-bottom:22px">Премиальный интернет-магазин итальянской мебели · концепт-документ</p>
+    <h1>Casa d'Autore.<br><em>Дом, у которого есть автор.</em></h1>
+  </div>
+  <p class="lede">Рабочее название и концепт цифровой витрины для итальянской мебели уровня Poliform, Minotti и B&amp;B Italia. Документ описывает визуальную систему, пошаговую структуру главной страницы и карточки товара, текстовые прототипы, техническое задание на 360°-обзор и конфигуратор отделок, а также правила съёмки фотоконтента.</p>
+  <div class="facts">
+    <div><p class="eyebrow">Позиционирование</p>Кураторский дом итальянского дизайна, а не «магазин мебели»</div>
+    <div><p class="eyebrow">Аудитория</p>Владельцы квартир и домов 120 м²+, архитекторы, дизайнеры интерьеров</div>
+    <div><p class="eyebrow">Главная метрика</p>Запросы на консультацию и образцы, а не «добавления в корзину»</div>
+    <div><p class="eyebrow">Принцип</p>Один экран — одна мысль. Всё, что не помогает, убрано</div>
+  </div>
+</header>
+
+<!-- ============ I ============ -->
+<section class="part" id="concept">
+  <header>
+    <div class="num">I</div>
+    <div><h2>Концепция и визуальная система</h2><p>Как сайт должен ощущаться, прежде чем говорить о том, из чего он состоит.</p></div>
+  </header>
+
+  <div class="block">
+    <h3>Три принципа</h3>
+    <div class="three">
+      <div class="prose"><h4>Тишина вместо шума</h4><p>Ни баннеров, ни скидочных плашек, ни всплывающих окон. Каждый экран держит одну мысль и один образ. Пространство между элементами — такой же материал, как кожа и орех.</p></div>
+      <div class="prose"><h4>Архитектура, не декорация</h4><p>Сетка строгая, типографика крупная и точная, как чертёж. Красота возникает из пропорций, а не из украшений. Никаких теней, градиентов и скруглений на интерфейсе.</p></div>
+      <div class="prose"><h4>Ремесло на расстоянии вытянутой руки</h4><p>Каждое изделие можно рассмотреть ближе, чем в шоуруме: строчка, срез шпона, жила мрамора. Материал — главный герой карточки, а не характеристика в таблице.</p></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Палитра</h3>
+    <div class="swatches">
+      <div class="sw"><i style="background:#F2EDE3"></i><b>Avorio</b><span class="mono">#F2EDE3</span><span>Основной фон. Слоновая кость, слегка тёплая.</span></div>
+      <div class="sw"><i style="background:#E9E2D5"></i><b>Lino</b><span class="mono">#E9E2D5</span><span>Второй фон: полосы, фон свотчей, подложка галереи.</span></div>
+      <div class="sw"><i style="background:#8A8378"></i><b>Grigio caldo</b><span class="mono">#8A8378</span><span>Тёплый серый. Подписи, вторичный текст, линии.</span></div>
+      <div class="sw"><i style="background:#26241F"></i><b>Grafite</b><span class="mono">#26241F</span><span>Основной текст, кнопки. Не чёрный.</span></div>
+      <div class="sw"><i style="background:#4A3628"></i><b>Noce</b><span class="mono">#4A3628</span><span>Глубокий орех. Акцентный текст, тёмные секции.</span></div>
+      <div class="sw"><i style="background:#A98A4E"></i><b>Ottone</b><span class="mono">#A98A4E</span><span>Латунь. Единственный акцент: активное состояние, маркеры.</span></div>
+    </div>
+    <p class="note" style="margin-top:20px">Терракота <span class="mono">#B5643F</span> — резервный акцент для редакционных материалов и сезонных лукбуков. В интерфейсе каталога и карточки не используется, чтобы латунь оставалась единственным цветовым сигналом. Чистый белый <span class="mono">#FFFFFF</span> и чистый чёрный запрещены везде, кроме фотографий.</p>
+  </div>
+
+  <div class="block">
+    <h3>Типографика</h3>
+    <div class="specimen">
+      <div>
+        <div class="d">Linea Brera<small>Заголовки · Bodoni Moda · 400</small></div>
+        <p style="margin-top:22px;max-width:44ch;font-size:15px">Основной текст — Jost 300. Геометрический гротеск в духе итальянского модернизма 1930-х: ровный, лёгкий, не отвлекает от фотографий.</p>
+        <p class="mono" style="margin-top:14px;color:var(--mute)">W 2400 · D 1050 · H 720 мм · IBM Plex Mono для габаритов и артикулов</p>
+      </div>
+      <div class="scale">
+        <div><span class="mono">Display</span><span class="r" style="font-size:38px;line-height:1">Коллекция Lario</span><span class="mono">96 / 1.0</span></div>
+        <div><span class="mono">H1</span><span class="r" style="font-size:30px;line-height:1">Диван Brera</span><span class="mono">64 / 1.05</span></div>
+        <div><span class="mono">H2</span><span class="r" style="font-size:24px;line-height:1">Материалы и ремесло</span><span class="mono">40 / 1.1</span></div>
+        <div><span class="mono">H3</span><span class="r" style="font-size:19px;line-height:1">Кожа Toscana</span><span class="mono">26 / 1.2</span></div>
+        <div><span class="mono">Body</span><span style="font-size:15px">Полуанилиновая кожа тосканской выделки</span><span class="mono">17 / 1.6</span></div>
+        <div><span class="mono">Label</span><span class="eyebrow">Гостиная · Спальня · Столовая</span><span class="mono">11 / .22em</span></div>
+      </div>
+    </div>
+    <p class="note" style="margin-top:20px">Bodoni — шрифт Джамбаттисты Бодони из Пармы, самый узнаваемый итальянский вклад в типографику. Контраст штрихов даёт «архитектурность» без декоративности. Курсив Bodoni используется только для имён дизайнеров и цитат. Ширина строки текста — не более 66 символов.</p>
+  </div>
+
+  <div class="block">
+    <h3>Сетка, пространство, движение</h3>
+    <dl class="kv">
+      <dt>Базовая ширина</dt><dd>1440 px. Контентная область 1280 px, поля 80 px. На 1920+ контент не растягивается, растут только фотографии на всю ширину.</dd>
+      <dt>Колонки</dt><dd>12 колонок, межколонник 32 px. Текстовые блоки занимают 5–6 колонок, никогда 12. Фотографии — 6, 8 или 12.</dd>
+      <dt>Вертикальный ритм</dt><dd>Шаг 8 px. Расстояние между секциями главной — 160 px на десктопе, 96 px на мобильном. Между заголовком и текстом — 24–32 px.</dd>
+      <dt>Формы</dt><dd>Радиус скругления 0 везде. Границы 1 px, цвет Lino или Grigio caldo. Кнопки — текст с подчёркиванием или прямоугольник без заливки; заливка Grafite только у главного действия.</dd>
+      <dt>Движение</dt><dd>Плавные, медленные переходы 600–900 мс, кривая ease-out. Появление фотографий — лёгкое осветление, без сдвигов. Курсор над фотографией — небольшое приближение 1.03 за 1.2 с. Никаких параллаксов и «летающих» элементов.</dd>
+      <dt>Иконки</dt><dd>Минимальный набор: поиск, подборка, меню, стрелки, 360°. Штрих 1 px, размер 20 px. Всё остальное — словами.</dd>
+    </dl>
+  </div>
+</section>
+
+<!-- ============ II ============ -->
+<section class="part" id="home">
+  <header>
+    <div class="num">II</div>
+    <div><h2>Главная страница</h2><p>Порядок экранов сверху вниз. Каждый блок отвечает на один вопрос посетителя, и вопросы идут от «кто вы» к «что мне сделать».</p></div>
+  </header>
+
+  <div class="two" style="margin-bottom:56px;align-items:start">
+    <div>
+      <div class="wireframe-head"><span class="eyebrow">Каркас · десктоп</span><span class="mono" style="color:var(--mute)">1440</span></div>
+      <div class="wire">
+        <div class="row" style="grid-template-columns:1fr 2fr 1fr"><div class="b"><em>01</em>Меню</div><div class="b" style="justify-content:center">CASA D'AUTORE</div><div class="b" style="justify-content:flex-end">Поиск · Подборка</div></div>
+        <div class="b img hero"><em>02</em>Полноэкранное атмосферное фото · одна строка заголовка · одна ссылка</div>
+        <div class="b" style="min-height:70px"><em>03</em>Манифест: 2–3 строки крупным Bodoni, 6 колонок, много воздуха</div>
+        <div class="row" style="grid-template-columns:repeat(4,1fr)"><div class="b img tall"><em>04</em>Гостиная</div><div class="b img tall">Спальня</div><div class="b img tall">Столовая</div><div class="b img tall">Кабинет</div></div>
+        <div class="row" style="grid-template-columns:2fr 1fr"><div class="b img tall"><em>05</em>Коллекция сезона · фото 8 кол.</div><div class="b tall">Название · философия · ссылка</div></div>
+        <div class="row" style="grid-template-columns:repeat(5,1fr)"><div class="b img"><em>06</em>Кожа</div><div class="b img">Мрамор</div><div class="b img">Орех</div><div class="b img">Ткань</div><div class="b img">Латунь</div></div>
+        <div class="row" style="grid-template-columns:1fr 1fr"><div class="b tall"><em>07</em>Конфигуратор: «Соберите свой Brera» · интерактивный превью</div><div class="b img tall">Изделие меняет отделку</div></div>
+        <div class="row" style="grid-template-columns:1fr 1fr 1fr"><div class="b img"><em>08</em>Дизайнер</div><div class="b img">Дизайнер</div><div class="b img">Дизайнер</div></div>
+        <div class="b img tall"><em>09</em>Интерьер целиком: shoppable-фото с точками на изделиях</div>
+        <div class="row" style="grid-template-columns:repeat(3,1fr)"><div class="b"><em>10</em>Доставка и монтаж</div><div class="b">Консультация архитектора</div><div class="b">Образцы материалов</div></div>
+        <div class="row" style="grid-template-columns:1fr 1fr"><div class="b img"><em>11</em>Журнал</div><div class="b img">Журнал</div></div>
+        <div class="b"><em>12</em>Подвал: навигация · шоурум · контакты · подписка</div>
+      </div>
+    </div>
+    <div>
+      <div class="wireframe-head"><span class="eyebrow">Каркас · мобильный</span><span class="mono" style="color:var(--mute)">390</span></div>
+      <div class="wire" style="max-width:260px">
+        <div class="row" style="grid-template-columns:1fr 2fr 1fr"><div class="b">≡</div><div class="b" style="justify-content:center">C d'A</div><div class="b" style="justify-content:flex-end">◯</div></div>
+        <div class="b img hero">Фото 4:5 · заголовок · ссылка</div>
+        <div class="b">Манифест</div>
+        <div class="b img">Гостиная</div>
+        <div class="b img">Спальня</div>
+        <div class="b img">Столовая</div>
+        <div class="b img">Кабинет</div>
+        <div class="b img tall">Коллекция сезона</div>
+        <div class="b">Материалы · горизонтальная лента</div>
+        <div class="b img">Конфигуратор</div>
+        <div class="b">Дизайнеры · лента</div>
+        <div class="b img">Интерьер</div>
+        <div class="b">Сервисы</div>
+        <div class="b">Подвал</div>
+      </div>
+      <p class="note" style="margin-top:18px">На мобильном комнаты идут одна под другой в полную ширину, а не сеткой 2×2: изображения должны оставаться крупными. Ленты материалов и дизайнеров прокручиваются горизонтально.</p>
+    </div>
+  </div>
+
+  <div class="steps">
+    <div class="step"><div class="n">01</div><div class="t">Шапка<small>Фиксированная, 72 px</small></div><div class="d">Прозрачная поверх hero, при прокрутке получает фон Avorio. Слева меню: Коллекции, Комнаты, Дизайнеры, Материалы, Проекты, Ателье. Центр — логотип. Справа: Поиск, Подборка (вместо «Корзина»). Мега-меню открывается на полную ширину с одним фото и списком в две колонки.</div></div>
+    <div class="step"><div class="n">02</div><div class="t">Открывающий экран<small>Высота 85vh, не 100</small></div><div class="d">Одно атмосферное фото или 8-секундное видео без звука: медленный проезд камеры по гостиной с утренним светом. Поверх — заголовок из 3–5 слов в Bodoni 96 px и одна текстовая ссылка. Никаких слайдеров.</div></div>
+    <div class="step"><div class="n">03</div><div class="t">Манифест<small>Кто мы</small></div><div class="d">Два-три предложения о философии дома. Шрифт 40 px, выравнивание по левому краю, занимает 6 колонок из 12. Остальное — пустота. Это самый «дорогой» экран сайта именно потому, что на нём почти ничего нет.</div></div>
+    <div class="step"><div class="n">04</div><div class="t">Комнаты<small>Главная навигация</small></div><div class="d">Четыре вертикальных фото 3:4: Гостиная, Спальня, Столовая, Кабинет. Подпись под фото, не поверх. При наведении фото медленно приближается, подпись получает латунный маркер. Ведут в каталог с предустановленным фильтром комнаты.</div></div>
+    <div class="step"><div class="n">05</div><div class="t">Коллекция сезона<small>Редакционный блок</small></div><div class="d">Фото 8 колонок + текстовая колонка: название коллекции, имя дизайнера курсивом, 4–5 строк философии, ссылка «Смотреть коллекцию». Один блок, одна коллекция. Меняется раз в сезон через CMS.</div></div>
+    <div class="step"><div class="n">06</div><div class="t">Материалы<small>Горизонтальная лента</small></div><div class="d">Макросъёмка пяти материалов в квадратах 1:1: кожа, мрамор, орех, ткань, латунь. Подпись — только название и происхождение: «Мрамор Calacatta · Карра́ра». Ведут на страницу материала с полным описанием и списком изделий.</div></div>
+    <div class="step"><div class="n">07</div><div class="t">Конфигуратор<small>Интерактивный тизер</small></div><div class="d">Одно флагманское изделие, четыре кружка отделок. Клик меняет фото без перезагрузки. Текст: «Каждое изделие делается под вас. Выберите кожу, дерево, камень». Ссылка ведёт в карточку с открытым конфигуратором.</div></div>
+    <div class="step"><div class="n">08</div><div class="t">Дизайнеры<small>Авторство</small></div><div class="d">Три портрета в чёрно-белом исполнении, имя в Bodoni Italic, одно предложение: город, год рождения, чем известен. Подчёркивает главный тезис бренда: у каждого предмета есть автор.</div></div>
+    <div class="step"><div class="n">09</div><div class="t">Интерьер целиком<small>Shoppable-фото</small></div><div class="d">Одно фото гостиной или столовой во всю ширину с латунными точками на изделиях. Наведение показывает название и цену «от», клик открывает карточку. Показывает, как вещи живут вместе, и продаёт комплект без слова «комплект».</div></div>
+    <div class="step"><div class="n">10</div><div class="t">Сервис<small>Снятие тревоги</small></div><div class="d">Три текстовых колонки без иконок: доставка и монтаж «в белых перчатках», консультация архитектора в шоуруме или онлайн, бесплатные образцы материалов. Каждая — заголовок 26 px и два предложения.</div></div>
+    <div class="step"><div class="n">11</div><div class="t">Журнал<small>Контент и SEO</small></div><div class="d">Две последние статьи: фото 3:2, рубрика, заголовок. Темы: история фабрики, как выбрать кожу, визит в дом дизайнера. Ссылка «Все материалы».</div></div>
+    <div class="step"><div class="n">12</div><div class="t">Подвал<small>Спокойный</small></div><div class="d">Четыре колонки ссылок, адрес шоурума с часами, подписка на журнал одним полем, языки. Без соцсетевых иконок в цвете: названия сетей текстом.</div></div>
+  </div>
+</section>
+
+<!-- ============ III ============ -->
+<section class="part" id="catalog">
+  <header>
+    <div class="num">III</div>
+    <div><h2>Каталог и фильтры</h2><p>Каталог — не список, а экспозиция. Фильтры помогают сузить выбор, но не превращают страницу в маркетплейс.</p></div>
+  </header>
+
+  <div class="two">
+    <div class="prose">
+      <h3>Логика страницы</h3>
+      <p>Заголовок раздела (например, «Гостиная») и одно предложение-введение. Под ним — панель фильтров одной строкой: Комната, Категория, Коллекция, Дизайнер, Материал, Цена. Каждый фильтр раскрывается вниз списком, без чекбоксов в боковой колонке. Активные фильтры отображаются тегами под панелью.</p>
+      <p>Сетка изделий — 3 в ряд на десктопе с чередованием: каждый 5-й элемент занимает 2 колонки и показывает изделие в интерьере. Карточка в сетке: фото на нейтральном фоне, при наведении — фото в интерьере; под фото название, дизайнер, цена «от». Никаких кнопок «В корзину» в сетке.</p>
+      <p>Переключатель вида: «Предметы» (на фоне) и «Интерьеры» (все фото атмосферные). Сортировка: «Рекомендуемое», «Новинки», «По цене». Пагинация — кнопка «Показать ещё», не бесконечная прокрутка.</p>
+    </div>
+    <div>
+      <div class="tbl">
+      <table>
+        <thead><tr><th>Фильтр</th><th>Значения</th><th>Поведение</th></tr></thead>
+        <tbody>
+          <tr><td>Комната</td><td>Гостиная, Спальня, Столовая, Кабинет, Прихожая, Терраса</td><td>Один выбор. Меняет заголовок и вводный текст страницы</td></tr>
+          <tr><td>Категория</td><td>Диваны, Кресла, Столы, Стулья, Кровати, Хранение, Свет, Аксессуары</td><td>Зависит от комнаты: показываются только релевантные</td></tr>
+          <tr><td>Коллекция</td><td>Lario, Brera, Ostuni, Valtellina и далее по CMS</td><td>Множественный выбор. Ведёт к странице коллекции при единственном значении</td></tr>
+          <tr><td>Дизайнер</td><td>Список авторов</td><td>Множественный выбор, портрет рядом с именем</td></tr>
+          <tr><td>Материал</td><td>Кожа, Ткань, Орех, Дуб, Ясень, Мрамор, Травертин, Латунь, Стекло</td><td>Множественный. Изделие попадает при наличии материала в любой отделке</td></tr>
+          <tr><td>Цена</td><td>Ползунок, шаг 50 000 ₽</td><td>По цене базовой конфигурации</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="note" style="margin-top:16px">Все фильтры синхронизируются с URL: <span class="mono">/catalog/gostinaya?material=noce,pelle&amp;collection=brera</span>. Такая ссылка открывается с тем же состоянием, индексируется и может быть отправлена клиенту архитектором.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ IV ============ -->
+<section class="part" id="product">
+  <header>
+    <div class="num">IV</div>
+    <div><h2>Карточка товара</h2><p>Самая важная страница. Её задача — дать ощущение, что вы стоите в шоуруме и трогаете материал, а затем без усилия перейти к запросу.</p></div>
+  </header>
+
+  <div class="block">
+    <div class="wireframe-head"><span class="eyebrow">Первый экран карточки · макет</span><span class="mono" style="color:var(--mute)">Диван Brera · Antonio Citterio-style brief</span></div>
+    <div class="pcard">
+      <div class="g">
+        <div class="main"><span>Атмосферное фото · гостиная · утренний свет</span></div>
+        <div class="thumbs"><i class="on">Интерьер</i><i>Фронт</i><i>Профиль</i><i>360°</i><i>Строчка</i><i>Кожа</i></div>
+      </div>
+      <div class="i">
+        <span class="eyebrow">Коллекция Brera · дизайн <em style="font-family:'Bodoni Moda',serif;text-transform:none;letter-spacing:0;font-size:14px">Marco Ferrante</em></span>
+        <h3>Диван Brera</h3>
+        <p style="font-size:14px;color:var(--ink-2);max-width:40ch">Трёхместный диван на латунном основании. Полуанилиновая кожа, подушки из пера и пенополиуретана с памятью.</p>
+        <div class="price">1 940 000 ₽<small>в выбранной отделке</small></div>
+        <div class="fin"><div class="lab"><span>Обивка</span><b>Кожа Toscana · Cognac</b></div><div class="dots"><i style="background:#8A4E2E" class="on"></i><i style="background:#3B2A22"></i><i style="background:#C8BBA5"></i><i style="background:#5C5C57"></i><i style="background:#9C8A6F"></i></div></div>
+        <div class="fin"><div class="lab"><span>Основание</span><b>Латунь брашированная</b></div><div class="dots"><i style="background:#A98A4E" class="on"></i><i style="background:#2A2925"></i><i style="background:#8E8A85"></i></div></div>
+        <div class="dims mono"><span>Ширина 2400 мм</span><span>Глубина 1050 мм</span><span>Высота 720 мм</span><span>Высота сиденья 420 мм</span></div>
+        <div class="btns"><span class="btn p">Заказать</span><span class="btn">Запросить образцы</span><span class="btn" style="border:0;padding-left:0">В подборку</span></div>
+        <span style="font-size:12px;color:var(--mute)">Изготовление 10–12 недель · Доставка и монтаж включены</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="steps">
+    <div class="step"><div class="n">01</div><div class="t">Хлебные крошки и контекст</div><div class="d">«Гостиная / Диваны / Brera». Над названием — коллекция и имя дизайнера курсивом. Это первое, что читает посетитель: авторство раньше цены.</div></div>
+    <div class="step"><div class="n">02</div><div class="t">Галерея<small>Левая колонка, 7 из 12</small></div><div class="d">Главный кадр — изделие в интерьере. Миниатюры в строгом порядке: интерьер, фронт, профиль, 360°, деталь кроя, макро материала. Клик на 360° открывает вращение прямо в галерее; клик на любой кадр — полноэкранный просмотр с зумом. Галерея пересчитывается при смене отделки в конфигураторе.
+      <ul><li>Соотношение главного кадра 4:3, на мобильном 4:5</li><li>Миниатюры без рамок, активная — с тонкой линией Grafite</li><li>Подпись кадра словами: «Строчка спинки · кожа Toscana»</li></ul></div></div>
+    <div class="step"><div class="n">03</div><div class="t">Информационная колонка<small>Прилипает при прокрутке</small></div><div class="d">Название, короткое описание в два предложения, цена в выбранной конфигурации с пометкой, что она пересчитывается. Ниже — конфигуратор: группы «Обивка», «Основание», «Дерево» с кружками отделок. Выбор показывает название и обновляет фото и цену. Ссылка «Все отделки» открывает боковую панель со всеми свотчами, сгруппированными по типу и цвету.</div></div>
+    <div class="step"><div class="n">04</div><div class="t">Габариты<small>Точно и честно</small></div><div class="d">Ширина, глубина, высота, высота сиденья, вес — в миллиметрах и килограммах, моноширинным шрифтом. Кнопка «Схема» открывает чертёж с размерами в трёх проекциях. Для модульных изделий — таблица модулей.</div></div>
+    <div class="step"><div class="n">05</div><div class="t">Действия<small>Три, не больше</small></div><div class="d">«Заказать» — единственная залитая кнопка, ведёт в оформление. «Запросить образцы» — бесплатная отправка до 4 свотчей. «В подборку» — сохранить, ссылка на подборку доступна без регистрации. Под кнопками одной строкой: срок изготовления, условия доставки.</div></div>
+    <div class="step"><div class="n">06</div><div class="t">История изделия<small>Полноширинный блок</small></div><div class="d">Фото дизайнера или эскиза, цитата курсивом, три абзаца: замысел, конструкция, контекст в коллекции. Тон — как в каталоге издательства, не как в описании товара.</div></div>
+    <div class="step"><div class="n">07</div><div class="t">Материалы и ремесло<small>Макросъёмка</small></div><div class="d">Два-три квадратных макрокадра во всю ширину: кожа, строчка, шов латуни. Под каждым — происхождение материала и способ обработки. Ссылка на страницу материала.</div></div>
+    <div class="step"><div class="n">08</div><div class="t">Технические данные<small>Для архитекторов</small></div><div class="d">Свёрнутые разделы: полная таблица размеров, конструкция и наполнение, уход, сертификаты. Загрузки: техлист PDF, 3D-модели DWG/OBJ/glTF, карта отделок. Это блок, по которому нас будут выбирать профессионалы.</div></div>
+    <div class="step"><div class="n">09</div><div class="t">Соберите комнату<small>Кросс-продажи</small></div><div class="d">Изделия из той же коллекции и из того же интерьера, что на главном фото. Четыре карточки, никаких «с этим товаром покупают».</div></div>
+    <div class="step"><div class="n">10</div><div class="t">Ателье<small>Финал</small></div><div class="d">Приглашение в шоурум и на консультацию: одно фото, два предложения, кнопка «Записаться». Заканчиваем не корзиной, а разговором.</div></div>
+  </div>
+</section>
+
+<!-- ============ V ============ -->
+<section class="part" id="copy">
+  <header>
+    <div class="num">V</div>
+    <div><h2>Текстовые прототипы</h2><p>Готовые тексты ключевых блоков. Тон: спокойный, точный, без восклицаний и превосходных степеней. Мы описываем, а не убеждаем.</p></div>
+  </header>
+
+  <div class="block">
+    <span class="eyebrow" style="display:block;margin-bottom:14px">Открывающий экран главной</span>
+    <div class="copy">
+      <h3>Мебель, у которой есть автор.</h3>
+      <p>Итальянские дома дизайна, чьи вещи живут дольше моды.</p>
+      <span class="cta">Смотреть коллекции</span>
+    </div>
+  </div>
+
+  <div class="block">
+    <span class="eyebrow" style="display:block;margin-bottom:14px">Манифест</span>
+    <div class="copy">
+      <h3>Мы не продаём мебель. Мы привозим из Италии предметы, за которыми стоят имя, фабрика и семьдесят лет ремесла.</h3>
+      <p>Каждое изделие в Casa d'Autore делается под заказ в мастерских Брианцы, Венето и Тосканы. Мы знаем, кто шьёт кожу, кто выбирает мрамор в карьере и кто ставит последнюю строчку. Поэтому мы можем обещать вещь, которая через двадцать лет будет красивее, чем сегодня.</p>
+    </div>
+  </div>
+
+  <div class="block">
+    <span class="eyebrow" style="display:block;margin-bottom:14px">Философии коллекций</span>
+    <div class="copy-grid">
+      <div class="copy">
+        <span class="eyebrow">Гостиная · дизайн Marco Ferrante</span>
+        <h3>Brera</h3>
+        <p>Названа в честь миланского квартала, где галереи соседствуют с мастерскими. Низкие горизонтали, латунные основания, кожа с открытой порой. Brera рассчитана на комнату, где разговаривают, а не смотрят телевизор.</p>
+        <span class="cta">Смотреть коллекцию</span>
+      </div>
+      <div class="copy">
+        <span class="eyebrow">Столовая · дизайн Elena Vismara</span>
+        <h3>Lario</h3>
+        <p>Стол как берег озера Комо: тяжёлая столешница из мрамора Calacatta на основании из массива ореха, которое едва касается пола. Стулья Lario обтянуты шерстью и держат спину так, что ужин может длиться до полуночи.</p>
+        <span class="cta">Смотреть коллекцию</span>
+      </div>
+      <div class="copy">
+        <span class="eyebrow">Спальня · дизайн Studio Aria</span>
+        <h3>Ostuni</h3>
+        <p>Белый город Апулии, известковые стены, полдень. Кровать с мягким изголовьем в льне и шкафы-стены в шпоне выбеленного дуба. Ostuni — коллекция для тех, кто хочет просыпаться в тишине.</p>
+        <span class="cta">Смотреть коллекцию</span>
+      </div>
+      <div class="copy">
+        <span class="eyebrow">Кабинет · дизайн Marco Ferrante</span>
+        <h3>Valtellina</h3>
+        <p>Письменный стол, за которым принимают решения. Столешница из ореха Canaletto толщиной 40 мм, кожаная вставка, латунный кабель-канал, спрятанный в ножке. Никаких ящиков на виду.</p>
+        <span class="cta">Смотреть коллекцию</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <span class="eyebrow" style="display:block;margin-bottom:14px">Материалы</span>
+    <div class="tbl"><table>
+      <thead><tr><th style="width:22%">Материал</th><th>Текст для сайта</th></tr></thead>
+      <tbody>
+        <tr><td>Кожа Toscana</td><td>Полуанилиновая кожа из кожевен Санта-Кроче-сулл-Арно. Дублена растительными танинами, окрашена в барабане, без покрывного слоя. Сохраняет следы жизни животного и со временем приобретает патину, которую невозможно воспроизвести.</td></tr>
+        <tr><td>Орех Canaletto</td><td>Американский чёрный орех, отобранный по рисунку волокна на фабрике в Брианце. Шпон толщиной 0,9 мм подбирается «в книжку», массив покрывается маслом, а не лаком, чтобы дерево осталось тёплым на ощупь.</td></tr>
+        <tr><td>Мрамор Calacatta Oro</td><td>Добывается в Апуанских Альпах над Каррарой. Каждая столешница — единственный экземпляр: мы присылаем фото конкретной плиты до распила и просим утвердить рисунок.</td></tr>
+        <tr><td>Латунь</td><td>Литая, брашированная вручную, без гальванического покрытия. Через год потемнеет по краям. Это не дефект, это то, ради чего её выбирают.</td></tr>
+        <tr><td>Шерсть и лён</td><td>Ткани из Прато и Бьеллы: шерсть с высокой плотностью для стульев, лён стирки stone-washed для спален. Все ткани проходят тест Мартиндейла не менее 50 000 циклов.</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="block">
+    <span class="eyebrow" style="display:block;margin-bottom:14px">Описание изделия · образец</span>
+    <div class="copy">
+      <span class="eyebrow">Диван Brera · три модуля</span>
+      <h3>Диван, который сидит ниже, чем вы привыкли, и держит лучше, чем вы ожидаете.</h3>
+      <p>Каркас из массива бука и стали, ремни из натурального каучука, подушки сиденья с сердцевиной из пенополиуретана переменной плотности и оболочкой из гусиного пера. Основание из литой латуни поднимает диван над полом на 120 мм, и комната остаётся видна целиком. Обивка снимается для чистки.</p>
+      <p>Собирается в Меде, провинция Монца-э-Брианца. Срок изготовления 10–12 недель.</p>
+    </div>
+  </div>
+
+  <div class="block">
+    <span class="eyebrow" style="display:block;margin-bottom:14px">Наследие и сервис</span>
+    <div class="copy-grid">
+      <div class="copy">
+        <h3>Сделано в Италии — это адрес, а не слоган.</h3>
+        <p>Мы называем фабрику и город на каждой карточке. Если хотите, свозим вас туда: раз в сезон мы организуем поездку для клиентов и архитекторов в мастерские Брианцы.</p>
+      </div>
+      <div class="copy">
+        <h3>Образцы приедут раньше, чем вы решите.</h3>
+        <p>До четырёх образцов кожи, ткани, дерева или камня бесплатно в течение трёх дней. Смотрите их в своём свете, в своей комнате.</p>
+        <span class="cta">Запросить образцы</span>
+      </div>
+      <div class="copy">
+        <h3>Доставка в белых перчатках.</h3>
+        <p>Бригада привозит, поднимает, собирает и забирает упаковку. Стол из мрамора выставляем по уровню, диван ставим на войлок. Вы принимаете готовую комнату.</p>
+      </div>
+      <div class="copy">
+        <h3>Архитектор на вашей стороне.</h3>
+        <p>Консультация в шоуруме или по видеосвязи: планировка, свет, сочетание отделок. Бесплатно и без обязательств.</p>
+        <span class="cta">Записаться</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Правила тона</h3>
+    <div class="dont">
+      <div><span class="eyebrow">Так не пишем</span><ul class="no">
+        <li>«Хит продаж», «Скидка», «Успейте», «Только сегодня»</li>
+        <li>Восклицательные знаки и слова «роскошный», «эксклюзивный», «элитный»</li>
+        <li>«Купить» и «Корзина». У нас «Заказать» и «Подборка»</li>
+        <li>Прилагательные без факта: «высочайшее качество»</li>
+        <li>Обращение на «ты» и уменьшительные формы</li>
+      </ul></div>
+      <div><span class="eyebrow">Так пишем</span><ul class="yes">
+        <li>Факт вместо оценки: «шпон 0,9 мм, подбор в книжку»</li>
+        <li>Место и имя: город фабрики, имя дизайнера, карьер</li>
+        <li>Один глагол на кнопку: «Заказать», «Записаться», «Смотреть»</li>
+        <li>Короткие предложения. Точка в конце заголовка допустима</li>
+        <li>Итальянские названия без перевода, с ударением при первом упоминании</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VI ============ -->
+<section class="part" id="tech">
+  <header>
+    <div class="num">VI</div>
+    <div><h2>Техническое задание: 360°-обзор и конфигуратор</h2><p>Для разработчиков и UI/UX-дизайнеров. Описывает поведение, данные, производительность и критерии приёмки двух ключевых интерактивных модулей.</p></div>
+  </header>
+
+  <div class="block">
+    <h3>Архитектура и стек</h3>
+    <dl class="kv">
+      <dt>Фронтенд</dt><dd>Next.js (App Router), React, TypeScript. Рендер каталога и карточек на сервере с инкрементальной регенерацией, чтобы фильтры и карточки индексировались.</dd>
+      <dt>Коммерция</dt><dd>Headless-платформа с поддержкой сложных вариаций и ценовых правил: commercetools или Medusa. Заказ не завершается оплатой онлайн: создаётся запрос, менеджер подтверждает конфигурацию и срок.</dd>
+      <dt>Контент</dt><dd>Sanity или Payload CMS: коллекции, дизайнеры, материалы, журнал, редакционные блоки главной. Товар в CMS ссылается на SKU в коммерции.</dd>
+      <dt>Изображения</dt><dd>CDN с трансформациями по URL (imgix, Cloudinary): AVIF/WebP, ресайз, качество. Оригиналы в S3-совместимом хранилище.</dd>
+      <dt>Поиск и фасеты</dt><dd>Algolia или Typesense: фасеты по комнате, категории, коллекции, дизайнеру, материалу, цене. Индексируется каждая конфигурация как отдельная запись со ссылкой на родительский товар.</dd>
+      <dt>Бюджет производительности</dt><dd>LCP карточки товара ≤ 2,5 с на 4G, CLS ≤ 0,05, первый кадр 360° ≤ 800 мс после клика, смена отделки ≤ 300 мс до отклика и ≤ 1,5 с до нового кадра.</dd>
+    </dl>
+  </div>
+
+  <div class="block">
+    <h3>Модуль 360°-обзора</h3>
+    <div class="prose">
+      <h4>Подход</h4>
+      <p>Фотографический 360° на основе покадровой съёмки на поворотном столе, а не 3D-рендер. Для мебели с кожей и деревом фото передаёт материал убедительнее, чем real-time рендер, и не требует WebGL. 3D-модель glTF хранится отдельно для AR-просмотра «в своей комнате» и загрузок архитекторам, но не заменяет фотообзор.</p>
+      <h4>Исходные данные</h4>
+      <ul>
+        <li>36 кадров на оборот (шаг 10°) для базовой отделки каждого изделия. Для флагманов — 72 кадра (шаг 5°) и второе кольцо с подъёмом камеры 15°.</li>
+        <li>Три размера каждого кадра: 1200, 2000 и 3200 px по длинной стороне. Формат AVIF с фолбэком WebP, качество 78. Фон — единый тёплый серый циклорама, обрезка одинаковая для всех кадров.</li>
+        <li>Дополнительно первый кадр в 400 px как постер: показывается до загрузки набора.</li>
+        <li>360° снимается для каждой отделки из «первого ряда» конфигуратора (до 5 на изделие). Для остальных — только кольцо базовой отделки с подписью «Показана отделка Cognac».</li>
+      </ul>
+      <h4>Поведение</h4>
+      <ul>
+        <li>Открытие: постер появляется мгновенно, кольцо догружается 12 ключевыми кадрами (каждый третий), затем остальными. Вращение доступно после ключевых кадров.</li>
+        <li>Управление: перетаскивание мышью и пальцем с инерцией, стрелки клавиатуры, колесо только с зажатым Shift. Колесо без модификатора не должно захватывать прокрутку страницы.</li>
+        <li>При первом открытии — один автоматический оборот за 4 с, затем остановка на фронтальном кадре. Автооборот отключается при prefers-reduced-motion.</li>
+        <li>Зум ×2 по клику или щипку: подгружается кадр 3200 px текущего угла, вращение при зуме заблокировано, доступно панорамирование.</li>
+        <li>Точки интереса: до 6 на изделие, привязаны к диапазону углов в JSON. Показываются латунной точкой, при наведении — подпись, при клике — макрокадр в галерее.</li>
+        <li>Индикатор угла: тонкая дуга под изделием с отметкой текущего градуса. Подпись «360°» и подсказка «Потяните, чтобы повернуть» исчезают после первого взаимодействия.</li>
+        <li>Фолбэк при ошибке загрузки: четыре статичных ракурса (0°, 90°, 180°, 270°) в виде миниатюр.</li>
+      </ul>
+      <h4>Формат данных</h4>
+    </div>
+    <pre style="margin-top:14px">{
+  "sku": "BRERA-3S",
+  "finish": "pelle-toscana-cognac",
+  "frames": 36,
+  "rings": [{ "elevation": 0 }, { "elevation": 15 }],
+  "sizes": [1200, 2000, 3200],
+  "url": "https://cdn.casadautore.it/360/{sku}/{finish}/r{ring}/f{frame:02}_{size}.avif",
+  "poster": "https://cdn.casadautore.it/360/BRERA-3S/pelle-toscana-cognac/poster.avif",
+  "hotspots": [
+    { "id": "stitch", "angles": [300, 60], "x": 0.62, "y": 0.41,
+      "title": "Строчка спинки", "gallery": "brera-macro-stitch" },
+    { "id": "base",   "angles": [0, 360],  "x": 0.50, "y": 0.88,
+      "title": "Литая латунь", "gallery": "brera-macro-base" }
+  ]
+}</pre>
+    <div class="prose" style="margin-top:20px">
+      <h4>Критерии приёмки</h4>
+      <ul>
+        <li>Обзор работает без WebGL и без сторонних библиотек тяжелее 15 КБ gzip.</li>
+        <li>Полный набор 36 кадров в 1200 px весит не более 3 МБ. Кадры выше 1200 px грузятся только по действию пользователя.</li>
+        <li>Доступность: обзор управляется с клавиатуры, имеет роль <span class="mono">img</span> с описанием, угол объявляется через aria-live при остановке вращения.</li>
+        <li>Проверено на Safari iOS, Chrome Android, Safari и Chrome на десктопе; вращение не дёргается на 60 Гц при 36 кадрах.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Конфигуратор отделок</h3>
+    <div class="prose">
+      <h4>Модель данных</h4>
+      <p>Изделие имеет от одной до четырёх <strong>зон отделки</strong>: обивка, основание, дерево, столешница. Каждая зона ссылается на <strong>группу материалов</strong>, каждая группа — на список <strong>отделок</strong>. Отделка имеет код, название, тип, цвет для сортировки, ценовую категорию, свотч 240 px и макрокадр 1600 px. <strong>Матрица совместимости</strong> запрещает сочетания, которые фабрика не производит.</p>
+    </div>
+    <pre style="margin-top:14px">product BRERA-3S
+  zones:
+    upholstery: group "pelle-e-tessuti"   <span class="c">// кожа и ткани, 48 отделок</span>
+    base:       group "metalli"           <span class="c">// латунь, бронза, графит</span>
+  pricing:
+    base_price: 1 640 000                 <span class="c">// категория A обивки, латунь</span>
+    upholstery: { A: 0, B: +140 000, C: +300 000, D: +520 000 }
+    base:       { ottone: 0, bronzo: +60 000, grafite: -40 000 }
+  incompatible:
+    - [ upholstery: "lino-*", base: "grafite" ]  <span class="c">// лён только с латунью и бронзой</span></pre>
+    <div class="prose" style="margin-top:20px">
+      <h4>Интерфейс</h4>
+      <ul>
+        <li>В карточке — «первый ряд»: до 6 кружков на зону, выбранных редактором как самые характерные. Ссылка «Все отделки» открывает боковую панель 480 px со всеми свотчами группы, табами по типу (кожа, ткань, шерсть) и фильтром по цвету.</li>
+        <li>Свотч — круг 28 px с фотографией материала, не заливкой цветом. При наведении — название и категория цены во всплывающей подписи. Активный — тонкое кольцо Grafite с отступом.</li>
+        <li>В панели: свотч 96 px, название, состав, категория, кнопка «Макро» для полноэкранного просмотра 1600 px, кнопка «Добавить в образцы».</li>
+        <li>Несовместимая отделка не скрывается, а отображается приглушённой с подписью «Недоступно с основанием Grafite». Клик предлагает сменить основание.</li>
+        <li>Цена обновляется анимацией перебора цифр за 300 мс. Срок изготовления обновляется, если отделка из категории D увеличивает срок.</li>
+        <li>Состояние конфигурации живёт в URL: <span class="mono">?upholstery=pelle-toscana-cognac&amp;base=ottone</span>. Ссылка воспроизводит конфигурацию, цену и фото. Кнопка «Поделиться конфигурацией» копирует ссылку.</li>
+        <li>Выбранная конфигурация сохраняется в подборку и в запрос на заказ как набор кодов отделок плюс расчётная цена и снимок изображения.</li>
+      </ul>
+      <h4>Визуализация смены отделки</h4>
+      <p>Три уровня, по нарастающей стоимости производства контента. Рекомендуемый для запуска — второй.</p>
+    </div>
+    <div class="tbl" style="margin-top:14px"><table>
+      <thead><tr><th>Уровень</th><th>Способ</th><th>Плюсы</th><th>Минусы</th><th>Когда</th></tr></thead>
+      <tbody>
+        <tr><td>1. Фото по отделке</td><td>Отдельная фотосессия фронтального кадра для каждой отделки первого ряда</td><td>Максимальный реализм</td><td>Не масштабируется на 48 отделок</td><td>Первый ряд флагманов</td></tr>
+        <tr><td>2. Послойный композит</td><td>Фронтальный и 3/4 кадр снимаются один раз в нейтральной обивке; для каждой зоны — маска. Текстура материала накладывается на сервере с учётом карты освещения, результат кэшируется как обычное изображение</td><td>Любое сочетание, фотореализм 90 %, без WebGL</td><td>Нужна предобработка масок и карт света для каждого изделия, 3–4 ч работы ретушёра</td><td>Все изделия, все сочетания</td></tr>
+        <tr><td>3. Real-time 3D</td><td>glTF-модель с PBR-материалами, рендер в браузере через three.js</td><td>Любой угол, AR, тени под свет</td><td>Тяжёлые модели, кожа и ткань выглядят синтетически, дорого в подготовке</td><td>AR «в вашей комнате», позже</td></tr>
+      </tbody>
+    </table></div>
+    <div class="prose" style="margin-top:20px">
+      <h4>API</h4>
+    </div>
+    <pre style="margin-top:14px">GET  /api/products/{sku}/configuration?upholstery=…&amp;base=…
+     → { price, lead_time_weeks, compatible: true, images: { hero, three_quarter }, spin: {...} | null }
+
+GET  /api/finishes?group=pelle-e-tessuti&amp;color=brown
+     → [{ code, name, type, category, swatch, macro, composition }]
+
+POST /api/samples        { finishes: [code×≤4], address }
+POST /api/requests       { sku, configuration, contact, note }   <span class="c">// заказ = запрос менеджеру</span>
+POST /api/collections    { items: [{ sku, configuration }] }      <span class="c">// подборка, доступна по ссылке</span></pre>
+    <div class="prose" style="margin-top:20px">
+      <h4>Критерии приёмки</h4>
+      <ul>
+        <li>Смена отделки не вызывает перезагрузку страницы и сдвиг макета; старое изображение остаётся до готовности нового, переход через плавное осветление 400 мс.</li>
+        <li>Любая ссылка с параметрами конфигурации открывается в правильном состоянии на сервере, включая цену в HTML до гидратации.</li>
+        <li>Нельзя отправить запрос с несовместимой комбинацией: проверка на клиенте и на сервере.</li>
+        <li>Панель отделок работает с клавиатуры: свотчи как radio-группа, стрелки перемещают выбор, Enter подтверждает.</li>
+        <li>Все свотчи имеют текстовое название в alt и в подписи; цвет никогда не единственный носитель информации.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Задачи для UI/UX-дизайнера</h3>
+    <div class="prose">
+      <ul>
+        <li>Дизайн-система в Figma: токены цвета и типографики из раздела I, сетка 12/32/80, компоненты: кнопка (3 варианта), ссылка, свотч (4 состояния), миниатюра галереи, панель фильтра, тег активного фильтра, шаг конфигуратора, боковая панель.</li>
+        <li>Прототип карточки товара с потоком: открыть 360° → повернуть → кликнуть точку интереса → вернуться → сменить отделку → открыть все отделки → добавить в образцы → запросить образцы.</li>
+        <li>Состояния 360°: постер, загрузка ключевых кадров, готово, зум, ошибка. Состояния свотча: обычный, наведение, активный, недоступный.</li>
+        <li>Мобильные версии всех экранов на 390 px, включая панель отделок как нижний лист на 85 % высоты.</li>
+        <li>Спецификация анимаций: длительность, кривые, что происходит при reduced-motion.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VII ============ -->
+<section class="part" id="photo">
+  <header>
+    <div class="num">VII</div>
+    <div><h2>Арт-дирекшн и съёмка фотоконтента</h2><p>Фотография — это 80 % ощущения «дорого». Правила ниже обязательны для каждой сессии: собственной, фабричной или заказанной у стороннего фотографа.</p></div>
+  </header>
+
+  <div class="block">
+    <h3>Визуальная интонация</h3>
+    <div class="prose">
+      <p>Ориентиры: каталоги Minotti и Poliform последних лет, интерьеры Vincent Van Duysen, фотографии Салвы Лопеса и Де Паскуале + Майфреди. Общее в них: естественный свет, точная геометрия, отсутствие суеты. Кадр выглядит так, будто жильцы вышли на минуту.</p>
+      <p>Сайт не должен выглядеть как каталог: мы снимаем дом, в котором живут. Одна книга на столе, ветка оливы в вазе, лён с заломами. Но не более трёх предметов реквизита в кадре, и ни один из них не должен быть «красивее» мебели.</p>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Локации и свет</h3>
+    <dl class="kv">
+      <dt>Локации</dt><dd>Миланская квартира в палаццо 1930-х с терраццо и высокими окнами; вилла на озере Комо с видом в дымке; масерия в Апулии с известковыми стенами; лофт в бывшей мастерской с бетонными колоннами. Одна локация на коллекцию, чтобы у каждой было своё «место».</dd>
+      <dt>Свет</dt><dd>Только естественный или его точная имитация. Северные окна, утро до 10:00 или вечер после 17:00. Длинные мягкие тени — обязательны, они показывают объём кожи и ребро мрамора. Прямое солнце допустимо одним пятном на полу или стене, не на мебели.</dd>
+      <dt>Запрещено</dt><dd>Вспышка в лоб, HDR, лучи, боке от гирлянд, «золотой час» с оранжевым небом, зеркала с отражением фотографа, люди в фокусе, логотипы, техника, экраны.</dd>
+      <dt>Люди</dt><dd>Допускается одна фигура вне фокуса или со спины, в нейтральной одежде. Никогда не смотрит в камеру и не «пользуется» мебелью демонстративно.</dd>
+    </dl>
+  </div>
+
+  <div class="block">
+    <h3>Композиция и оптика</h3>
+    <div class="two">
+      <div class="prose">
+        <h4>Интерьерные кадры</h4>
+        <ul>
+          <li>Камера на высоте 1,1–1,3 м, строго горизонтально. Вертикали выправлены tilt-shift объективом или в постобработке до идеально прямых.</li>
+          <li>Фокусное расстояние 35–50 мм в полнокадровом эквиваленте. Шире 28 мм не снимать: искажения делают мебель дешёвой.</li>
+          <li>Фронтальный или строго угловой ракурс. Диагональные «динамичные» композиции запрещены.</li>
+          <li>Диафрагма f/8–f/11 для интерьеров, вся сцена в резкости.</li>
+          <li>Соотношения: 3:2 для главных экранов, 4:5 для комнат и мобильных, 1:1 для материалов.</li>
+        </ul>
+      </div>
+      <div class="prose">
+        <h4>Детали и макро</h4>
+        <ul>
+          <li>85–100 мм для деталей, f/4–f/5.6, фокус на строчке или кромке, фон мягко уходит.</li>
+          <li>Макро 1:1 для фактур: пора кожи, жила мрамора, волокно шпона. Свет боковой, скользящий, чтобы читался рельеф.</li>
+          <li>Каждый макрокадр снимается на реальном изделии, а не на образце: в кадре должен быть виден край, шов или угол.</li>
+          <li>Для латуни и стекла — обязательный контроль отражений, чёрный флаг со стороны камеры.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Цвет и постобработка</h3>
+    <div class="prose">
+      <p>Тёплый нейтральный баланс 5000–5200 K. Насыщенность снижена на 10–15 % относительно нейтральной проявки. Чёрные точки приподняты: самый тёмный тон в кадре — не чёрный, а графит. Белые стены остаются слоновой костью, не выбиваются. Цвет кожи и дерева сверяется с физическим образцом на калиброванном мониторе: клиент получит то, что видел.</p>
+      <p>Зернистость не добавляется. Виньетирование не добавляется. Ретушь ограничена удалением пыли, проводов и розеток. Складки кожи и естественные пороки не удаляются: они часть материала.</p>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Обязательный список кадров на изделие</h3>
+    <div class="shots">
+      <div class="shot"><div class="ph wide">01 · 3:2</div><b>Интерьер, общий</b><span>Изделие в комнате, видны пол и окно. Главный кадр карточки.</span></div>
+      <div class="shot"><div class="ph wide">02 · 4:5</div><b>Интерьер, вертикаль</b><span>Тот же интерьер для мобильного и сетки комнат.</span></div>
+      <div class="shot"><div class="ph">03 · 4:3</div><b>Фронт на циклораме</b><span>Тёплый серый фон, камера 1,2 м, без тени от вспышки.</span></div>
+      <div class="shot"><div class="ph">04 · 4:3</div><b>Три четверти</b><span>45° слева. Основной кадр конфигуратора.</span></div>
+      <div class="shot"><div class="ph">05 · 4:3</div><b>Профиль</b><span>90°. Показывает высоту сиденья и вынос спинки.</span></div>
+      <div class="shot"><div class="ph">06 · 4:3</div><b>Спина</b><span>180°. Обязателен: изделия стоят посреди комнат.</span></div>
+      <div class="shot"><div class="ph">07 · 1:1</div><b>Деталь кроя</b><span>Строчка, кант, подворот. 85 мм.</span></div>
+      <div class="shot"><div class="ph macro">08 · 1:1</div><b>Макро материала</b><span>Пора кожи, волокно, жила камня. 1:1, боковой свет.</span></div>
+      <div class="shot"><div class="ph">09 · 1:1</div><b>Узел</b><span>Место встречи материалов: латунь и кожа, орех и мрамор.</span></div>
+      <div class="shot"><div class="ph wide">10 · 3:2</div><b>Масштаб</b><span>Фигура вне фокуса рядом с изделием, чтобы читался размер.</span></div>
+      <div class="shot"><div class="ph">11 · 4:3</div><b>Отделки первого ряда</b><span>Кадры 03 и 04 в каждой из до 5 отделок.</span></div>
+      <div class="shot"><div class="ph">12 · 360°</div><b>Кольцо 36 кадров</b><span>Поворотный стол, шаг 10°, фиксированная камера и свет.</span></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Студийная съёмка 360° и конфигуратора</h3>
+    <dl class="kv">
+      <dt>Стол</dt><dd>Моторизованный поворотный стол диаметром не менее 3 м с грузоподъёмностью 500 кг, программируемый шаг 10° и 5°. Метка нуля совпадает с фронтом изделия.</dd>
+      <dt>Фон</dt><dd>Циклорама, окрашенная в Lino <span class="mono">#E9E2D5</span>. Один и тот же цвет для всех изделий и всех лет, чтобы каталог не рассыпался.</dd>
+      <dt>Камера</dt><dd>Полный кадр 45 МП и выше, 50 мм, штатив с фиксацией, высота 1,2 м, центр кадра на геометрическом центре изделия. Съёмка через привязанный компьютер, автоспуск после каждого шага стола.</dd>
+      <dt>Свет</dt><dd>Три источника постоянного света: ключевой 2×1 м софтбокс сверху-слева под 45°, заполняющий справа с половинной мощностью, контровой на фон. Свет не меняется между кадрами и между отделками. Снимается серая карта для каждого набора.</dd>
+      <dt>Композит</dt><dd>Для послойного конфигуратора дополнительно снимаются кадры 03 и 04 в нейтральной серой обивке, а также кадры с матовым белым материалом для карты освещения. Ретушёр готовит маски зон в PSD с именованными слоями.</dd>
+    </dl>
+  </div>
+
+  <div class="block">
+    <h3>Передача материалов</h3>
+    <dl class="kv">
+      <dt>Форматы</dt><dd>RAW и TIFF 16 бит для архива, JPEG качества 95 в Adobe RGB для ретуши, финальные JPEG/AVIF в sRGB для сайта. Минимальная длинная сторона 6000 px.</dd>
+      <dt>Имена файлов</dt><dd class="mono">{sku}_{finish}_{shot:02}_{ratio}_{size}.{ext} → BRERA-3S_pelle-toscana-cognac_04_4x3_3200.avif</dd>
+      <dt>Метаданные</dt><dd>В IPTC: изделие, коллекция, дизайнер, локация, фотограф, дата, тип кадра. Без этого файл не принимается в CDN.</dd>
+      <dt>Права</dt><dd>Бессрочная лицензия на веб, печать и соцсети. Локации подписывают согласие на публикацию. Фотограф указывается в журнале, не в каталоге.</dd>
+    </dl>
+  </div>
+</section>
+
+<footer class="end">
+  <span>Casa d'Autore · концепт-документ v1.0</span>
+  <span>I – VII · Концепция, Главная, Каталог, Карточка, Тексты, ТЗ, Съёмка</span>
+</footer>
+
+</main>
+</div>
