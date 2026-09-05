@@ -1,5 +1,10 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Casa d'Autore</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..700&family=Prata&display=swap">
 <style>
 :root{
   --bg:#F3EEE5; --bg2:#EAE3D6; --card:#FBF8F2;
@@ -24,11 +29,11 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{transition:none!important;animation:none!important}}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Jost","Helvetica Neue",Arial,sans-serif;font-weight:400;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Manrope","Helvetica Neue",Arial,sans-serif;font-weight:400;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
-h1,h2,h3{font-family:"Bodoni Moda","Didot",Georgia,serif;font-weight:400;margin:0;line-height:1.1;text-wrap:balance}
+h1,h2,h3{font-family:"Prata","Didot",Georgia,serif;font-weight:400;margin:0;line-height:1.1;text-wrap:balance}
 p{margin:0}
 .wrap{max-width:1240px;margin:0 auto;padding:0 32px}
 .eyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass);font-weight:500}
@@ -44,8 +49,8 @@ p{margin:0}
 /* header */
 header.top{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line)}
 header.top .wrap{display:flex;align-items:center;gap:28px;height:72px}
-.logo{font-family:"Bodoni Moda",serif;font-size:24px;letter-spacing:.02em;line-height:1}
-.logo small{display:block;font-family:"Jost";font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute);margin-top:4px;font-weight:500}
+.logo{font-family:"Prata",serif;font-size:24px;letter-spacing:.02em;line-height:1}
+.logo small{display:block;font-family:"Manrope";font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute);margin-top:4px;font-weight:500}
 nav.main{display:flex;gap:26px;margin-left:12px}
 nav.main a{font-size:15px;color:var(--ink2);padding:6px 0;border-bottom:1px solid transparent}
 nav.main a:hover{border-color:var(--brass);color:var(--ink)}
@@ -119,7 +124,7 @@ section{padding:64px 0 0}
 .room img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s ease}
 .room:hover img{transform:scale(1.04)}
 .room .lbl{position:absolute;left:0;right:0;bottom:0;padding:18px;background:linear-gradient(transparent,rgba(20,18,15,.7));color:#F3EEE5}
-.room .lbl b{display:block;font-family:"Bodoni Moda",serif;font-weight:400;font-size:26px}
+.room .lbl b{display:block;font-family:"Prata",serif;font-weight:400;font-size:26px}
 .room .lbl span{font-size:13px;opacity:.85}
 
 /* info blocks */
@@ -128,12 +133,12 @@ section{padding:64px 0 0}
 .box h3{font-size:26px}
 .box ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;color:var(--ink2)}
 .box li::marker{color:var(--brass)}
-.box .big{font-family:"Bodoni Moda",serif;font-size:34px;color:var(--brass)}
+.box .big{font-family:"Prata",serif;font-size:34px;color:var(--brass)}
 .show{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .show .ph{aspect-ratio:16/9;overflow:hidden;background:var(--bg2)}
 .show .ph img{width:100%;height:100%;object-fit:cover}
 .show .b{padding:18px 0 0;display:flex;flex-direction:column;gap:4px}
-.show .b b{font-family:"Bodoni Moda",serif;font-weight:400;font-size:26px}
+.show .b b{font-family:"Prata",serif;font-weight:400;font-size:26px}
 .show .b span{color:var(--ink2);font-size:15px}
 .show .b small{color:var(--mute);font-size:14px}
 
@@ -153,6 +158,7 @@ footer .bottom{margin-top:30px;padding-top:16px;border-top:1px solid var(--line)
 
 /* modal */
 .modal{position:fixed;inset:0;z-index:100;background:rgba(20,18,15,.6);display:flex;align-items:center;justify-content:center;padding:24px}
+.modal[hidden]{display:none}
 .modal .win{background:var(--card);max-width:1080px;width:100%;max-height:92vh;overflow:auto;display:grid;grid-template-columns:1.15fr 1fr;position:relative}
 .modal .close{position:absolute;right:10px;top:10px;width:40px;height:40px;font-size:26px;line-height:1;display:flex;align-items:center;justify-content:center;background:var(--card);z-index:2}
 .gal{padding:20px;display:flex;flex-direction:column;gap:10px;background:var(--bg2)}
@@ -211,6 +217,8 @@ nav.mobile{display:none;background:var(--card);border-bottom:1px solid var(--lin
 nav.mobile.open{display:block}
 nav.mobile a{display:block;padding:14px 18px;border-bottom:1px solid var(--line);font-size:16px}
 </style>
+</head>
+<body>
 
 <header class="top">
   <div class="wrap">
@@ -236,7 +244,7 @@ nav.mobile a{display:block;padding:14px 18px;border-bottom:1px solid var(--line)
 
 <main id="top">
   <div class="hero">
-    <div class="ph"><img src="@@hero@@" alt="Светлая гостиная с двумя диванами и деревянным столиком"></div>
+    <div class="ph"><img src="@@hero1@@" alt="Светлая гостиная с двумя диванами и деревянным столиком"></div>
     <div class="wrap">
       <div class="txt">
         <span class="eyebrow" data-i="h0">Сделано в Италии</span>
@@ -559,3 +567,5 @@ document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>setLang(b.dat
 document.querySelectorAll('#mnav a').forEach(a=>a.onclick=()=>document.getElementById('mnav').classList.remove('open'));
 render();
 </script>
+</body>
+</html>
